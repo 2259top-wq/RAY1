@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Server 2022 全系列系統管理教學 & 實務指南</title>
+  <meta name="description" content="全方位的 Windows Server 2022 教學網站。包含 Active Directory (AD DS)、DNS、DHCP、Group Policy (GPO)、FSRM 檔案伺服器、Hyper-V 虛擬化、IIS 架站、WSUS 系統更新與 PowerShell 自動化維護教學。">
+  
+  <!-- Import Outfit & Fira Code from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Main Grid Layout -->
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-area">
+          <svg class="logo-icon" viewBox="0 0 24 24" width="28" height="28">
+            <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+            <rect x="13" y="2" width="9" height="9" rx="1.5" fill="currentColor"/>
+            <rect x="2" y="13" width="9" height="9" rx="1.5" fill="currentColor"/>
+            <rect x="13" y="13" width="9" height="9" rx="1.5" fill="currentColor"/>
+          </svg>
+          <div class="logo-text">
+            <h2>Windows Server</h2>
+            <span>2022 全系列實務教學</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Search Component -->
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18">
+          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="搜尋教學主題或指令...">
+      </div>
+
+      <!-- Navigation Tree -->
+      <div class="nav-scroll-area">
+        <nav class="nav-tree">
+          <ul id="chapter-list">
+            <!-- Dynamically populated from tutorials.js -->
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer Tools -->
+      <div class="sidebar-footer">
+        <p class="section-title">核心互動工具</p>
+        <div class="quick-tools-grid">
+          <button id="btn-powershell-gen" class="tool-btn">
+            <span class="btn-icon">⚡</span>
+            PowerShell 產生器
+          </button>
+          <button id="btn-checklist" class="tool-btn">
+            <span class="btn-icon">📋</span>
+            實務設定檢核表
+          </button>
+          <button id="btn-quiz-all" class="tool-btn">
+            <span class="btn-icon">🏆</span>
+            自我實力測驗
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      
+      <!-- Top Control Bar -->
+      <header class="top-bar">
+        <div class="breadcrumb-container">
+          <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="切換選單">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <div class="breadcrumbs" id="breadcrumbs">
+            <span>首頁</span> <span class="divider">/</span> <span class="active">系統安裝與介紹</span>
+          </div>
+        </div>
+
+        <div class="top-controls-right">
+          <!-- Reading Progress Indicator -->
+          <div class="reading-progress-wrapper" title="當前章節進度">
+            <span class="progress-label">閱讀進度</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="reading-progress"></div>
+            </div>
+            <span class="progress-percent" id="progress-percent">0%</span>
+          </div>
+
+          <!-- Theme Toggle Switch -->
+          <button class="theme-toggle" id="theme-switch" title="切換深淺色主題">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20">
+              <circle cx="12" cy="12" r="5" fill="currentColor"/>
+              <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Area Wrapper -->
+      <div class="content-body" id="content-body">
+        
+        <!-- Tab 1: Tutorial Content View -->
+        <section id="view-tutorial" class="content-view active">
+          <div class="chapter-hero">
+            <h1 id="chapter-title">第一章：Windows Server 2022 系統介紹與安裝</h1>
+            <p id="chapter-desc">本章介紹 Windows Server 2022 的主要版本差異、硬體系統需求、標準安裝步驟以及伺服器初次啟動後的基礎設定。</p>
+          </div>
+          
+          <div class="tutorial-grid">
+            <!-- Left Side: Article Content -->
+            <div class="article-panel">
+              <div id="article-sections-container">
+                <!-- Populated dynamically by app.js -->
+              </div>
+              
+              <!-- Bottom Navigation Controls -->
+              <div class="page-navigation">
+                <button id="btn-prev-chapter" class="nav-page-btn">
+                  <span class="arrow">←</span>
+                  <div class="nav-text">
+                    <span class="nav-hint">上一章</span>
+                    <span class="nav-name" id="prev-chapter-name">無</span>
+                  </div>
+                </button>
+                <button id="btn-next-chapter" class="nav-page-btn">
+                  <div class="nav-text">
+                    <span class="nav-hint">下一章</span>
+                    <span class="nav-name" id="next-chapter-name">第二章：Active Directory</span>
+                  </div>
+                  <span class="arrow">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side: Sticky Mini Widgets -->
+            <aside class="quick-widgets">
+              <!-- Chapter Checklist Card -->
+              <div class="widget-card card-glass">
+                <div class="widget-header">
+                  <span class="widget-icon">📋</span>
+                  <h3>本章設定進度</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="progress-ring-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" id="widget-checklist-progress"></div>
+                    </div>
+                  </div>
+                  <ul class="widget-checklist" id="widget-checklist-list">
+                    <!-- Populated dynamically from tutorials.js -->
+                  </ul>
+                  <button class="widget-action-btn" id="widget-checklist-goto">進入檢核表</button>
+                </div>
+              </div>
+
+              <!-- Chapter Quiz Quick Card -->
+              <div class="widget-card card-glass">
+                <div class="widget-header">
+                  <span class="widget-icon">❓</span>
+                  <h3>本章觀念檢測</h3>
+                </div>
+                <div class="widget-body text-center">
+                  <p>完成本章後，透過 2 題精選題目驗證您的 Windows 管理學識。</p>
+                  <div class="quiz-score-indicator" id="widget-quiz-score-text">尚未測驗</div>
+                  <button class="widget-action-btn" id="widget-quiz-goto">開始自我檢測</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Tab 2: PowerShell Script Generator View -->
+        <section id="view-powershell-generator" class="content-view">
+          <div class="tool-hero">
+            <h1>⚡ Windows Server 2022 PowerShell 腳本產生器</h1>
+            <p>點選欲執行的伺服器日常管理工作，輸入對應之參數，系統會自動生成經標準化封裝之 PowerShell 指令供複製使用。</p>
+          </div>
+
+          <div class="tool-layout">
+            <!-- Settings panel -->
+            <div class="tool-card card-glass form-panel">
+              <h3>1. 選擇管理任務與參數設定</h3>
+              <div class="form-group">
+                <label for="ps-task-select">選擇管理功能類型：</label>
+                <select id="ps-task-select">
+                  <optgroup label="基礎網路設定">
+                    <option value="net_static_ip">變更主機名稱與設定靜態 IP 位址</option>
+                    <option value="net_enable_rdp">快速啟用遠端桌面 (RDP) 與對應防火牆規則</option>
+                  </optgroup>
+                  <optgroup label="Active Directory (AD DS) 管理">
+                    <option value="ad_install_forest">新增 AD DS 樹系 (全新第一台 DC 部署)</option>
+                    <option value="ad_create_ou_user">批次建立組織單位 (OU) 與新網域使用者</option>
+                  </optgroup>
+                  <optgroup label="DNS & DHCP 服務">
+                    <option value="dns_set_forwarder">設定外部 DNS 轉寄站 (Forwarders)</option>
+                    <option value="dhcp_create_scope">新增 DHCP 作用域與指定 Gateway/DNS 參數</option>
+                  </optgroup>
+                  <optgroup label="檔案與安全">
+                    <option value="fs_create_share">建立檔案共用資料夾與設定 NTFS 權限</option>
+                    <option value="sec_add_firewall">建立入站防火牆自訂 TCP 連接埠規則</option>
+                    <option value="backup_system_state">執行單次 System State 系統狀態備份</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- Custom inputs container, loaded dynamically based on selection -->
+              <div id="ps-dynamic-inputs" class="dynamic-inputs-area">
+                <!-- Dynamically loaded -->
+              </div>
+            </div>
+
+            <!-- Code display panel -->
+            <div class="tool-card card-glass output-panel">
+              <div class="output-header">
+                <h3>2. 產生的 PowerShell 指令碼</h3>
+                <button class="copy-btn" id="btn-copy-generated">
+                  <svg viewBox="0 0 24 24" width="16" height="16">
+                    <rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>複製程式碼</span>
+                </button>
+              </div>
+              <div class="code-editor-mock" id="generated-code-container">
+                <!-- Dynamically loaded line-by-line in app.js -->
+              </div>
+              <div class="tool-tip">
+                <strong>系統管理提示：</strong> 請在 Windows Server 2022 的 PowerShell 視窗以 <strong>系統管理員身分 (Run as Administrator)</strong> 貼上並執行上述腳本。
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 3: Setup Checklist View -->
+        <section id="view-checklist" class="content-view">
+          <div class="tool-hero">
+            <h1>📋 Windows Server 2022 實務設定檢核表</h1>
+            <p>這是一個持續記錄的伺服器架設稽核表。您可以把本站所教的各章節任務隨手勾選，系統會自動在您的瀏覽器保存進度。</p>
+          </div>
+
+          <div class="checklist-container card-glass">
+            <div class="checklist-header">
+              <h2>伺服器部署全局檢核進度</h2>
+              <div class="checklist-progress-summary">
+                <span class="percent" id="chk-overall-percent">0%</span>
+                <span class="count" id="chk-overall-count">已完成 0 / 0 項</span>
+              </div>
+              <div class="progress-bar-bg full-width">
+                <div class="progress-bar-fill" id="chk-overall-bar"></div>
+              </div>
+            </div>
+            
+            <div class="checklist-chapters-list" id="checklist-chapters-list">
+              <!-- Dynamically rendered per chapter -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 4: Quiz View -->
+        <section id="view-quizzes" class="content-view">
+          <div class="tool-hero">
+            <h1>🏆 Windows Server 2022 系統管理自我測驗</h1>
+            <p>本測驗包含對應 10 個教學章節的核心觀念考題，協助您在閱讀完教學後快速驗證對 AD DS, GPO, DNS, FSRM 及虛擬化的理解程度。</p>
+          </div>
+
+          <div class="quiz-layout">
+            <!-- Sidebar with chapter selection for quizzes -->
+            <div class="quiz-nav card-glass">
+              <h3>選擇測驗章節</h3>
+              <ul class="quiz-chapter-tabs" id="quiz-chapter-tabs">
+                <!-- Dynamically populated -->
+              </ul>
+              <div class="quiz-overall-score-panel">
+                <h4>全局測驗通過率</h4>
+                <div class="score-ratio" id="quiz-overall-ratio">0 / 0</div>
+                <p>回答正確之總題目數</p>
+              </div>
+            </div>
+
+            <!-- Quiz Main Card -->
+            <div class="quiz-card card-glass" id="quiz-main-card">
+              <div class="quiz-card-header">
+                <span class="chapter-badge" id="quiz-chapter-badge">第一章</span>
+                <span class="question-number" id="quiz-question-number">第 1 / 2 題</span>
+              </div>
+
+              <div class="quiz-question-body">
+                <h3 id="quiz-question-text">載入中...</h3>
+                <div class="quiz-options-list" id="quiz-options-list">
+                  <!-- Dynamically populated button options -->
+                </div>
+              </div>
+
+              <!-- Quiz Feedback panel -->
+              <div class="quiz-feedback hidden" id="quiz-feedback-panel">
+                <div class="feedback-status" id="quiz-feedback-status">
+                  <span class="status-icon">✓</span>
+                  <span class="status-text">回答正確！</span>
+                </div>
+                <p class="explanation-text" id="quiz-explanation-text">
+                  詳細說明...
+                </p>
+              </div>
+
+              <div class="quiz-card-footer">
+                <button class="quiz-action-btn hidden" id="btn-quiz-next">下一題</button>
+                <button class="quiz-action-btn hidden" id="btn-quiz-restart">重新測驗</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Global Toast Notification -->
+  <div class="toast" id="toast-notification">已複製至剪貼簿！</div>
+
+  <!-- Dynamic Logic Scripts -->
+  <script src="tutorials.js?v=6"></script>
+  <script src="app.js?v=6"></script>
+</body>
+</html>
