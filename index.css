@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2026 2259top-wq
+ * All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of 2259top-wq.
+ * You shall not disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into with 2259top-wq.
+ */
+
 /* ==========================================
    Windows Server 2022 Tutorial CSS Stylesheet
    ========================================== */
@@ -818,13 +827,13 @@ code {
 }
 
 .widget-checklist li.checked::before {
-  content: "✓";
+  content: "??;
   font-weight: 700;
   color: var(--accent-success);
 }
 
 .widget-checklist li.unchecked::before {
-  content: "○";
+  content: "??;
   color: var(--text-muted);
 }
 
@@ -1135,7 +1144,7 @@ select:focus, input[type="text"]:focus, textarea:focus {
 }
 
 .checklist-checkbox::after {
-  content: "✓";
+  content: "??;
   color: var(--text-dark);
   font-size: 0.75rem;
   font-weight: 800;

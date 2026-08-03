@@ -1,32 +1,41 @@
+/*
+ * Copyright (c) 2026 2259top-wq
+ * All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of 2259top-wq.
+ * You shall not disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into with 2259top-wq.
+ */
+
 // Windows Server 2022 Full Series Tutorial Data
 const tutorialsData = [
   {
     id: "ch1_intro",
-    title: "第一章：系統介紹、版本選擇與安裝",
-    description: "本章介紹 Windows Server 2022 的主要版本差異、硬體系統需求、標準安裝步驟以及伺服器初次啟動後的基礎設定。",
+    title: "蝚砌?蝡?蝟餌絞隞晶???祇??摰?",
+    description: "?祉?隞晶 Windows Server 2022 ?蜓閬??砍榆?啜′擃頂蝯梢?瘙?皞?鋆郊撽誑?撩??活??敺??箇?閮剖???,
     checklist: [
-      "確認伺服器硬體規格符合官方最低需求",
-      "選擇合適的系統版本（Standard 或 Datacenter）及安裝介面（Core 或 Desktop Experience）",
-      "使用 ISO/USB 隨身碟開機並完成作業系統安裝",
-      "修改電腦名稱（伺服器名稱）並重啟",
-      "配置固定 IPv4 位址、子網路遮罩與 DNS 伺服器",
-      "啟用遠端桌面 (RDP) 功能並設定防火牆允許通過",
-      "執行 Windows Update 完成安全性修補更新"
+      "蝣箄?隡箸??函′擃??潛泵???寞?雿?瘙?,
+      "?豢???頂蝯梁??穿?Standard ??Datacenter嚗?摰?隞嚗ore ??Desktop Experience嚗?,
+      "雿輻 ISO/USB ?刻澈蝣?璈蒂摰?雿平蝟餌絞摰?",
+      "靽格?餉?迂嚗撩??迂嚗蒂??",
+      "?蔭?箏? IPv4 雿???蝬脰楝?桃蔗??DNS 隡箸???,
+      "??垢獢 (RDP) ?銝西身摰?怎??迂??",
+      "?瑁? Windows Update 摰?摰?找耨鋆??
     ],
     quiz: [
       {
-        question: "Windows Server 2022 的「Server Core (核心版)」和「Desktop Experience (桌面體驗版)」相比，主要優勢為何？",
+        question: "Windows Server 2022 ?erver Core (?詨??????esktop Experience (獢擃????瘥?銝餉??芸?箔?嚗?,
         options: [
-          "提供更好的 3D 繪圖運算與影音支援",
-          "更低的資源佔用、更小的攻擊面、更少的安全更新頻率",
-          "支援更多的 Hyper-V 虛擬主機授權",
-          "支援安裝微軟 Office 辦公套件"
+          "???游末??3D 蝜芸????蔣?單??,
+          "?港???皞??具撠??餅??Ｕ撠?摰?湔?餌?",
+          "?舀?游???Hyper-V ?銝餅???",
+          "?舀摰?敺株? Office 颲血憟辣"
         ],
         correct: 1,
-        explanation: "Server Core 移除了圖形介面 (GUI)，這使它耗用的記憶體與磁碟空間更小，且因為服務與組件較少，暴露的安全漏洞也大幅降低，減少了系統更新重啟的頻率。"
+        explanation: "Server Core 蝘駁鈭?敶Ｖ???(GUI)嚗蝙摰???園???蝣征?撠?銝??箸???蝯辣頛?嚗?脩?摰瞍?銋之撟?雿?皜?鈭頂蝯望?圈????餌???
       },
       {
-        question: "在 Windows Server 2022 中，如何使用 PowerShell 來快速將電腦名稱修改為「SRV-WEB-01」並立即重啟？",
+        question: "??Windows Server 2022 銝哨?憒?雿輻 PowerShell 靘翰???餉?迂靽格?箝RV-WEB-01?蒂蝡??嚗?,
         options: [
           "Rename-Computer -NewName 'SRV-WEB-01' -Restart",
           "Set-ComputerName -Name 'SRV-WEB-01' -Reboot",
@@ -34,84 +43,84 @@ const tutorialsData = [
           "New-ComputerName -Value 'SRV-WEB-01' -Action Restart"
         ],
         correct: 0,
-        explanation: "在 PowerShell 中，變更電腦名稱的標準 Cmdlet 是 Rename-Computer，搭配 -Restart 參數可在變更成功後自動重新啟動系統。"
+        explanation: "??PowerShell 銝哨?霈?餉?迂??皞?Cmdlet ??Rename-Computer嚗??-Restart ??臬霈??敺???啣??頂蝯晞?
       }
     ],
     sections: [
       {
-        title: "1.1 Windows Server 2022 版本與硬體需求",
-        content: `### Windows Server 2022 版本說明
-微軟針對不同業務規模，推出了三種主要版本：
-1. **Standard (標準版)**：適合實體或輕度虛擬化環境，每個授權最多可架設 2 個虛擬作業系統環境 (OSEs / VMs)。
-2. **Datacenter (資料中心版)**：專為高度虛擬化的資料中心與雲端設計，支援**阻隔限制**的虛擬主機 (VMs)，並包含 Storage Spaces Direct (S2D)、Software Defined Networking (SDN) 等進階儲存/網路技術。
-3. **Essentials (基本版)**：適合 25 個使用者或 50 台裝置以下的小型企業，不需購買額外的 CAL (Client Access Licenses)。
+        title: "1.1 Windows Server 2022 ??′擃?瘙?,
+        content: `### Windows Server 2022 ?隤芣?
+敺株???銝?璆剖?閬芋嚗?箔?銝車銝餉??嚗?
+1. **Standard (璅???**嚗?祕擃?頛漲??憓?瘥?甈?憭?嗉身 2 ???砌?璆剔頂蝯梁憓?(OSEs / VMs)??
+2. **Datacenter (鞈?銝剖???**嚗??粹?摨西??砍????葉敹??脩垢閮剛?嚗??*?駁??**???砌蜓璈?(VMs)嚗蒂? Storage Spaces Direct (S2D)?oftware Defined Networking (SDN) 蝑脤??脣?/蝬脰楝?銵?
+3. **Essentials (?箸??**嚗??25 ?蝙?刻? 50 ?啗?蝵桐誑銝?撠?隡平嚗??鞈潸眺憿???CAL (Client Access Licenses)??
 
-### 硬體最低需求與自我檢核命令
-在部署前，可以使用 PowerShell 快速檢測當前機器是否符合最低安裝硬體規格：
+### 蝖祇??雿?瘙??芣?瑼Ｘ?賭誘
+?券蝵脣?嚗隞乩蝙??PowerShell 敹恍炎皜祉???冽?衣泵??雿?鋆′擃??潘?
 \`\`\`powershell
-# 1. 檢測處理器架構與核心數
+# 1. 瑼Ｘ葫???冽瑽??詨???
 Get-CimInstance -ClassName Win32_Processor | Select-Object Name, NumberOfCores, NumberOfEnabledCore, AddressWidth
 
-# 2. 檢測記憶體大小 (轉換為 GB 單位)
+# 2. 瑼Ｘ葫閮擃之撠?(頧???GB ?桐?)
 Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum | ForEach-Object { "$([Math]::Round($_.Sum / 1GB, 2)) GB" }
 
-# 3. 檢測硬碟磁碟空間大小
+# 3. 瑼Ｘ葫蝖祉?蝤?蝛粹?憭批?
 Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object DeviceID, @{Name="TotalSize(GB)";Expression={[Math]::Round($_.Size/1GB,2)}}, @{Name="FreeSpace(GB)";Expression={[Math]::Round($_.FreeSpace/1GB,2)}}
 \`\`\`
 
-* **處理器**：1.4 GHz 64 位元處理器，相容於 x64 指令集，支援 DEP/NX、CMPXCHG16b、PrefetchW 等指令。
-* **記憶體**：最少 **512 MB**（若使用 GUI 桌面體驗版，最少需要 **2 GB**，建議 4 GB 以上）。
-* **硬碟空間**：最少 **32 GB**（建議 60 GB 以上以預留更新與分頁檔空間）。
-* **網路卡**：至少 1 Gbps 的乙太網路卡。`
+* **????*嚗?.4 GHz 64 雿????剁??詨捆??x64 ?誘???舀 DEP/NX?MPXCHG16b?refetchW 蝑?隞扎?
+* **閮擃?*嚗?撠?**512 MB**嚗雿輻 GUI 獢擃????撠?閬?**2 GB**嚗遣霅?4 GB 隞乩?嚗?
+* **蝖祉?蝛粹?**嚗?撠?**32 GB**嚗遣霅?60 GB 隞乩?隞仿???啗???瑼征????
+* **蝬脰楝??*嚗撠?1 Gbps ??憭芰雯頝臬?
       },
       {
-        title: "1.2 系統安裝與初始化設定",
-        content: `### 系統安裝引導
-1. 將 Windows Server 2022 安裝隨身碟或 ISO 掛載至伺服器。
-2. 啟動並進入安裝介面，設定語言（通常為中文-台灣）與鍵盤輸入法。
-3. 點選 **「立即安裝」**。
-4. **選擇版本**：
-   * 若需要滑鼠與視窗操作，請務必選擇帶有 **(桌面體驗) / (Desktop Experience)** 的選項。
-   * 否則系統會預設安裝無 GUI 的 **Server Core** 介面。
-5. 接受授權條款，選擇 **「自訂：僅安裝 Windows (進階)」**，點選目標硬碟並分割，點選下一步開始安裝。
-6. 安裝完成重啟後，設定系統管理員 \`Administrator\` 的複雜密碼。
+        title: "1.2 蝟餌絞摰???憪?閮剖?",
+        content: `### 蝟餌絞摰?撘?
+1. 撠?Windows Server 2022 摰??刻澈蝣? ISO ???喃撩???
+2. ??銝阡脣摰?隞嚗身摰?閮嚗虜?箔葉???啁嚗??萇頛詨瘜?
+3. 暺 **???喳?鋆?*??
+4. **?豢??**嚗?
+   * ?仿?閬?曌?閬???嚗????豢?撣嗆? **(獢擃?) / (Desktop Experience)** ???
+   * ?血?蝟餌絞??閮剖?鋆 GUI ??**Server Core** 隞??
+5. ?亙???璇狡嚗??**?閮???鋆?Windows (?脤?)??*嚗??貊璅′蝣蒂?嚗??訾?銝甇仿?憪?鋆?
+6. 摰?摰???敺?閮剖?蝟餌絞蝞∠???\`Administrator\` ????蝣潦?
 
-### 初始化實務：複製貼上指令設定
-完成安裝後，請以系統管理員身分開啟 PowerShell，直接複製並修改以下區塊以完成初始設定：
+### ???祕??銴ˊ鞎潔??誘閮剖?
+摰?摰?敺?隢誑蝟餌絞蝞∠??∟澈????PowerShell嚗?亥?鋆賭蒂靽格隞乩??憛誑摰???閮剖?嚗?
 
 \`\`\`powershell
-# ==================== 1. 變更電腦名稱 ====================
+# ==================== 1. 霈?餉?迂 ====================
 $NewName = "SRV-DC-01"
 Rename-Computer -NewName $NewName -Force
 
-# ==================== 2. 設定靜態 IP 位址 ====================
-# 自動尋找目前連線中的實體網卡 (狀態為 Up 且有硬體介面)
+# ==================== 2. 閮剖??? IP 雿? ====================
+# ?芸?撠?桀????銝剔?撖阡?蝬脣 (?? Up 銝?蝖祇?隞)
 $Adapter = Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.HardwareInterface } | Select-Object -First 1
 $Index = $Adapter.InterfaceIndex
 
 $IPAddress = "192.168.1.10"
-$Prefix = 24  # 代表子網路遮罩 255.255.255.0
+$Prefix = 24  # 隞?”摮雯頝舫蝵?255.255.255.0
 $Gateway = "192.168.1.1"
-$DNS = @("192.168.1.10", "8.8.8.8") # 以自己為 primary，外部 DNS 為 secondary
+$DNS = @("192.168.1.10", "8.8.8.8") # 隞亥撌梁 primary嚗???DNS ??secondary
 
-# 設定 IP 與 Gateway
+# 閮剖? IP ??Gateway
 New-NetIPAddress -InterfaceIndex $Index -IPAddress $IPAddress -PrefixLength $Prefix -DefaultGateway $Gateway -Force
-# 設定 DNS
+# 閮剖? DNS
 Set-DnsClientServerAddress -InterfaceIndex $Index -ServerAddresses $DNS
 
-# ==================== 3. 啟用遠端桌面 (RDP) 與防火牆 ====================
-# 允許 RDP 連線
+# ==================== 3. ??垢獢 (RDP) ??怎? ====================
+# ?迂 RDP ???
 Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -Name "fDenyTSConnections" -Value 0
-# 啟用網路層級驗證 (NLA) 以加強安全性 (0 為關閉，1 為啟用)
+# ?蝬脰楝撅斤?撽? (NLA) 隞亙?撘瑕??冽?(0 ?粹???1 ?箏???
 Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp' -Name "UserAuthentication" -Value 1
-# 允許防火牆通過
+# ?迂?脩??
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
-# ==================== 4. 開啟 ICMP Ping 允許檢測連線 ====================
-Enable-NetFirewallRule -DisplayName "檔案及印表機共用 (回應要求 - ICMPv4-In)"
+# ==================== 4. ?? ICMP Ping ?迂瑼Ｘ葫??? ====================
+Enable-NetFirewallRule -DisplayName "瑼??銵冽??梁 (??閬? - ICMPv4-In)"
 
-# ==================== 5. 重啟系統套用新電腦名稱 ====================
-Write-Host "設定完成！伺服器將在 5 秒後重新啟動..." -ForegroundColor Green
+# ==================== 5. ??蝟餌絞憟?圈?血?蝔?====================
+Write-Host "閮剖?摰?嚗撩?撠 5 蝘????..." -ForegroundColor Green
 Start-Sleep -Seconds 5
 Restart-Computer
 \`\`\``
@@ -120,73 +129,73 @@ Restart-Computer
   },
   {
     id: "ch2_ad_ds",
-    title: "第二章：Active Directory 網域服務 (AD DS) 部署",
-    description: "學習網域控制器 (Domain Controller) 的基本概念、安裝 AD DS 角色、將伺服器升級為網域主機，以及 OU、使用者、群組管理。",
+    title: "蝚砌?蝡?Active Directory 蝬脣??? (AD DS) ?函蔡",
+    description: "摮貊?蝬脣??批??(Domain Controller) ??祆?敹萸?鋆?AD DS 閫??隡箸??典?蝝蝬脣?銝餅?嚗誑??OU?蝙?刻黎蝯恣??,
     checklist: [
-      "確認本機伺服器已設定固定 IP 與電腦名稱",
-      "使用伺服器管理員安裝 Active Directory 網域服務角色",
-      "將伺服器升級為新樹系 (Forest) 中的第一台網域控制站 (DC)",
-      "設定 DSRM (目錄服務還原模式) 密碼並完成升級重啟",
-      "使用 AD 管理中心或 AD 使用者與電腦 (ADUC) 規劃組織單位 (OU) 結構",
-      "建立測試網域使用者與安全性群組",
-      "將用戶端 Windows 10/11 電記加入該 AD 網域"
+      "蝣箄??祆?隡箸??典歇閮剖??箏? IP ??血?蝔?,
+      "雿輻隡箸??函恣?摰? Active Directory 蝬脣???閫",
+      "撠撩????箸璅寧頂 (Forest) 銝剔?蝚砌??啁雯??嗥? (DC)",
+      "閮剖? DSRM (?桅?????璅∪?) 撖Ⅳ銝血???蝝???,
+      "雿輻 AD 蝞∠?銝剖???AD 雿輻???餉 (ADUC) 閬?蝯??桐? (OU) 蝯?",
+      "撱箇?皜祈岫蝬脣?雿輻??摰?抒黎蝯?,
+      "撠?嗥垢 Windows 10/11 ?餉??閰?AD 蝬脣?"
     ],
     quiz: [
       {
-        question: "在部署第一個 AD DS 網域控制站時，為什麼系統會要求設定 DSRM 密碼？",
+        question: "?券蝵脩洵銝??AD DS 蝬脣??批蝡?嚗隞暻潛頂蝯望?閬?閮剖? DSRM 撖Ⅳ嚗?,
         options: [
-          "這是為了之後變更 Administrator 登入密碼用的",
-          "在 Active Directory 資料庫損壞需要進入還原模式修復時，用於還原模式的管理者密碼",
-          "這是用來登入網域內一般用戶端電腦的預設密碼",
-          "用於備份網路共用資料夾的加密金鑰"
+          "??箔?銋?霈 Administrator ?餃撖Ⅳ?函?",
+          "??Active Directory 鞈?摨急?憯?閬脣??璅∪?靽桀儔???冽??璅∪??恣??蝣?,
+          "??其??餃蝬脣??找??祉?嗥垢?餉??閮剖?蝣?,
+          "?冽?遢蝬脰楝?梁鞈?憭曄????"
         ],
         correct: 1,
-        explanation: "DSRM (Directory Services Restore Mode) 密碼是當 AD 發生嚴重故障，伺服器必須以還原模式開機時使用的專屬系統管理密碼，與一般的網域 Administrator 密碼是分開的。"
+        explanation: "DSRM (Directory Services Restore Mode) 撖Ⅳ?舐 AD ?潛??湧???嚗撩?敹?隞仿??芋撘?璈?雿輻??撅祉頂蝯梁恣??蝣潘????祉?蝬脣? Administrator 撖Ⅳ?臬?????
       },
       {
-        question: "在 AD 網域中，以下哪一種群組類型可以用於跨網域分配資源權限，且可以包含來自任何網域的成員？",
+        question: "??AD 蝬脣?銝哨?隞乩??芯?蝔桃黎蝯??隞亦?潸楊蝬脣???鞈?甈?嚗??臭誑?靘隞颱?蝬脣????∴?",
         options: [
-          "網域本機群組 (Domain Local Group)",
-          "全域群組 (Global Group)",
-          "通用群組 (Universal Group)",
-          "發佈群組 (Distribution Group)"
+          "蝬脣??祆?蝢斤? (Domain Local Group)",
+          "?典?蝢斤? (Global Group)",
+          "?蝢斤? (Universal Group)",
+          "?潔?蝢斤? (Distribution Group)"
         ],
         correct: 2,
-        explanation: "通用群組 (Universal Group) 的成員身分會被寫入通用類別目錄 (Global Catalog)，它可包含任何網域中的帳戶或群組，並可套用至任何網域的權限中。通常遵循 AGUDLP 原則（帳戶加入全域，全域放入通用，通用放本機，本機指派權限）。"
+        explanation: "?蝢斤? (Universal Group) ???∟澈??鋡怠神?仿憿?桅? (Global Catalog)嚗??臬??思遙雿雯?葉?董?嗆?蝢斤?嚗蒂?臬??刻隞颱?蝬脣????葉?虜?萄儐 AGUDLP ??嚗董?嗅??亙???典??曉?嚗?暹璈??祆??晷甈?嚗?
       }
     ],
     sections: [
       {
-        title: "2.1 Active Directory 核心架構概念",
-        content: `### 什麼是 Active Directory 網域服務 (AD DS)？
-Active Directory 是微軟的核心目錄服務，用於在 Windows 網路環境中集中管理使用者帳戶、電腦、伺服器、印表機及權限。
+        title: "2.1 Active Directory ?詨??嗆?璁艙",
+        content: `### 隞暻潭 Active Directory 蝬脣??? (AD DS)嚗?
+Active Directory ?臬凝頠??詨??桅???嚗?澆 Windows 蝬脰楝?啣?銝剝?銝剔恣?蝙?刻董?嗚?艾撩??銵冽?????
 
-### AD 的階層化結構
-1. **樹系 (Forest)**：AD 結構中的最高層級邊界，一個樹系可以包含一個或多個網域樹狀目錄，它們共享同一個「綱要 (Schema)」與「通用類別目錄 (Global Catalog)」。
-2. **網域 (Domain)**：安全與管理上的邊界，共用同一個帳戶資料庫與安全性原則。例如 \`corp.contoso.com\`。
-3. **組織單位 (OU, Organizational Unit)**：網域內的邏輯容器，用於存放使用者、群組、電腦等物件。管理員可以將「群組原則 (GPO)」套用至 OU，或將 OU 的管理權限委派給特定的技術人員。
-4. **網域控制站 (DC, Domain Controller)**：負責保存 AD 目錄資料庫，並處理網域內使用者的登入驗證（採用 Kerberos v5 協定）與授權。`
+### AD ??撅文?蝯?
+1. **璅寧頂 (Forest)**嚗D 蝯?銝剔??擃惜蝝???銝?邦蝟餃隞亙??思???憭雯?邦??桅?嚗??鈭怠?銝?雇閬?(Schema)???憿?桅? (Global Catalog)??
+2. **蝬脣? (Domain)**嚗??刻?蝞∠?銝???嚗?典?銝?董?嗉??澈???冽批???憒?\`corp.contoso.com\`??
+3. **蝯??桐? (OU, Organizational Unit)**嚗雯???頛臬捆?剁??冽摮雿輻?黎蝯?衣??拐辣?恣??臭誑撠黎蝯???(GPO)???刻 OU嚗?撠?OU ?恣????瘣曄策?孵???銵犖?～?
+4. **蝬脣??批蝡?(DC, Domain Controller)**嚗?鞎砌?摮?AD ?桅?鞈?摨恬?銝西??雯?雿輻???餃撽?嚗??Kerberos v5 ??嚗????
       },
       {
-        title: "2.2 部署網域控制器實務",
-        content: `### 一鍵安裝 AD DS 角色與建立新樹系
-請將以下 PowerShell 指令完整複製，並在欲升級為 DC 的伺服器上執行。這會自動安裝 AD DS 角色並將伺服器升級為全新樹系的第一台 Domain Controller（以網域 \`lab.local\` 為例）：
+        title: "2.2 ?函蔡蝬脣??批?典祕??,
+        content: `### 銝?萄?鋆?AD DS 閫?遣蝡璅寧頂
+隢?隞乩? PowerShell ?誘摰銴ˊ嚗蒂?冽炬????DC ?撩?銝銵??芸?摰? AD DS 閫銝血?隡箸??典?蝝?冽璅寧頂?洵銝??Domain Controller嚗誑蝬脣? \`lab.local\` ?箔?嚗?
 
 \`\`\`powershell
-# ==================== 1. 安裝 AD DS 角色與管理工具 ====================
-Write-Host "正在安裝 AD DS 角色功能..." -ForegroundColor Cyan
+# ==================== 1. 摰? AD DS 閫?恣?極??====================
+Write-Host "甇?摰? AD DS 閫?..." -ForegroundColor Cyan
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
-# ==================== 2. 部署新樹系與 DC ====================
-# -DomainName: 網域的 FQDN 名稱
-# -DomainNetbiosName: 網域的短名稱 (通常為大寫主域名)
-# -SafeModeAdministratorPassword: 目錄服務還原模式 (DSRM) 密碼
+# ==================== 2. ?函蔡?唳邦蝟餉? DC ====================
+# -DomainName: 蝬脣???FQDN ?迂
+# -DomainNetbiosName: 蝬脣???迂 (?虜?箏之撖思蜓??)
+# -SafeModeAdministratorPassword: ?桅?????璅∪? (DSRM) 撖Ⅳ
 
 $DomainName = "lab.local"
 $NetBIOSName = "LAB"
 $DSRMPassword = ConvertTo-SecureString "P@ssw0rd999!" -AsPlainText -Force
 
-Write-Host "正在啟動 Active Directory 新樹系設定..." -ForegroundColor Cyan
+Write-Host "甇??? Active Directory ?唳邦蝟餉身摰?.." -ForegroundColor Cyan
 Import-Module ADDSDeployment
 
 Install-ADDSForest \
@@ -205,42 +214,42 @@ Install-ADDSForest \
 \`\`\``
       },
       {
-        title: "2.3 帳戶、群組與 OU 常用管理指令",
-        content: `### AD 基礎維護常用 PowerShell 指令
-部署完網域後，管理員可以複製以下常用維護腳本進行批次作業：
+        title: "2.3 撣單?黎蝯? OU 撣貊蝞∠??誘",
+        content: `### AD ?箇?蝬剛風撣貊 PowerShell ?誘
+?函蔡摰雯??嚗恣??臭誑銴ˊ隞乩?撣貊蝬剛風?單?脰??寞活雿平嚗?
 
 \`\`\`powershell
-# ==================== 1. 建立組織單位 (OU) ====================
-# 在網域根目錄下建立 "Taipei" 總 OU，並在其下建立 "Users" 及 "Groups" 子 OU
+# ==================== 1. 撱箇?蝯??桐? (OU) ====================
+# ?函雯??桅?銝遣蝡?"Taipei" 蝮?OU嚗蒂?典銝遣蝡?"Users" ??"Groups" 摮?OU
 $DomainDN = (Get-ADDomain).DistinguishedName
 New-ADOrganizationalUnit -Name "Taipei" -Path $DomainDN
 New-ADOrganizationalUnit -Name "Users" -Path "OU=Taipei,$DomainDN"
 New-ADOrganizationalUnit -Name "Groups" -Path "OU=Taipei,$DomainDN"
 
-# ==================== 2. 新增使用者帳戶 ====================
+# ==================== 2. ?啣?雿輻?董??====================
 $UserOU = "OU=Users,OU=Taipei,$DomainDN"
 $Password = ConvertTo-SecureString "TempP@ss123" -AsPlainText -Force
 
-# 新增使用者「王大明 (damon.wang)」並設定下次登入必須修改密碼
-New-ADUser -Name "王大明" \
+# ?啣?雿輻??憭扳? (damon.wang)?蒂閮剖?銝活?餃敹?靽格撖Ⅳ
+New-ADUser -Name "?之?? \
            -SamAccountName "damon.wang" \
            -UserPrincipalName "damon.wang@lab.local" \
            -Path $UserOU \
            -AccountPassword $Password \
            -Enabled $true \
            -ChangePasswordAtLogon $true \
-           -Title "系統工程師" \
-           -Department "IT部門"
+           -Title "蝟餌絞撌亦?撣? \
+           -Department "IT?券?"
 
-# ==================== 3. 建立安全性群組 ====================
+# ==================== 3. 撱箇?摰?抒黎蝯?====================
 $GroupOU = "OU=Groups,OU=Taipei,$DomainDN"
 New-ADGroup -Name "GG-IT-Staff" -GroupScope Global -GroupCategory Security -Path $GroupOU
 
-# ==================== 4. 將使用者加入群組 ====================
+# ==================== 4. 撠蝙?刻??亦黎蝯?====================
 Add-ADGroupMember -Identity "GG-IT-Staff" -Members "damon.wang"
 
-# ==================== 5. 將用戶端主機加入網域 ====================
-# (此指令需在用戶端電腦上以系統管理員身分執行，執行後需重啟)
+# ==================== 5. 撠?嗥垢銝餅??蝬脣? ====================
+# (甇斗?隞日??函?嗥垢?餉銝誑蝟餌絞蝞∠??∟澈?銵??瑁?敺???)
 # Add-Computer -DomainName "lab.local" -Credential (Get-Credential) -Restart
 \`\`\``
       }
@@ -248,101 +257,101 @@ Add-ADGroupMember -Identity "GG-IT-Staff" -Members "damon.wang"
   },
   {
     id: "ch3_dns_dhcp",
-    title: "第三章：DNS 與 DHCP 基礎網路服務架設",
-    description: "深入了解 DNS 解析原理、主機名稱與 IP 對應，以及 DHCP 自動發送 IP 位址、租期與保留區設定。",
+    title: "蝚砌?蝡?DNS ??DHCP ?箇?蝬脰楝???嗉身",
+    description: "瘛勗鈭圾 DNS 閫?????蜓璈?蝔梯? IP 撠?嚗誑??DHCP ?芸??潮?IP 雿?????靽??閮剖???,
     checklist: [
-      "在 DC 伺服器上驗證 DNS 角色是否已自動啟用並運作",
-      "建立 DNS 反向對應區域 (Reverse Lookup Zone) 以支援 IP 查主機名",
-      "設定 DNS 轉寄站 (Forwarders) 指向 ISP 或公共 DNS (如 8.8.8.8)",
-      "在網域中安裝 DHCP 伺服器角色",
-      "在 Active Directory 中「授權」此 DHCP 伺服器",
-      "建立 IPv4 領域 (Scope) 並設定租期、閘道器與 DNS 參數",
-      "建立用戶端固定 Mac 位址的 IP 保留區 (Reservation)"
+      "??DC 隡箸??其?撽? DNS 閫?臬撌脰???其蒂??",
+      "撱箇? DNS ??撠????(Reverse Lookup Zone) 隞交??IP ?乩蜓璈?",
+      "閮剖? DNS 頧?蝡?(Forwarders) ?? ISP ???DNS (憒?8.8.8.8)",
+      "?函雯?葉摰? DHCP 隡箸??刻???,
+      "??Active Directory 銝准?甈迨 DHCP 隡箸???,
+      "撱箇? IPv4 ?? (Scope) 銝西身摰??????DNS ?",
+      "撱箇??冽蝡臬摰?Mac 雿???IP 靽?? (Reservation)"
     ],
     quiz: [
       {
-        question: "在 Windows Server 中設定 DHCP 伺服器時，若要讓它能正常為網域內用戶端派發 IP，必須在 AD 中執行哪項重要動作？",
+        question: "??Windows Server 銝剛身摰?DHCP 隡箸??冽?嚗閬?摰甇?虜?箇雯??冽蝡舀晷??IP嚗?? AD 銝剖銵??閬?雿?",
         options: [
-          "將 DHCP 伺服器帳戶加入 Domain Admins 群組",
-          "在 Active Directory 中將 DHCP 伺服器進行「授權 (Authorize)」",
-          "關閉 DHCP 伺服器的 Windows 防火牆",
-          "將 DHCP 的資料庫檔案上傳至 SYSVOL 共用資料夾"
+          "撠?DHCP 隡箸??典董?嗅???Domain Admins 蝢斤?",
+          "??Active Directory 銝剖? DHCP 隡箸??券脰???甈?(Authorize)??,
+          "?? DHCP 隡箸??函? Windows ?脩??,
+          "撠?DHCP ???澈瑼?銝??SYSVOL ?梁鞈?憭?
         ],
         correct: 1,
-        explanation: "為了防止未授權的偽冒 DHCP 伺服器（Rogue DHCP）在網域內亂發 IP 造成網路混亂，AD 網域中的 DHCP 必須經過網域管理員「授權」才能啟用服務。"
+        explanation: "?箔??脫迫?芣?甈??賢? DHCP 隡箸??剁?Rogue DHCP嚗蝬脣??找???IP ??蝬脰楝瘛瑚?嚗D 蝬脣?銝剔? DHCP 敹?蝬?蝬脣?蝞∠??～?甈??賢??冽???
       },
       {
-        question: "DNS 中的「A 記錄」與「CNAME 記錄」主要差異為何？",
+        question: "DNS 銝剔?? 閮????NAME 閮??蜓閬榆?啁雿?",
         options: [
-          "A 記錄對應 IPv6，CNAME 對應 IPv4",
-          "A 記錄將主機名稱解析為實體 IP 位址，而 CNAME 是將主機別名對應到另一個主機名稱",
-          "A 記錄是用於電子郵件路由，CNAME 用於網頁伺服器",
-          "A 記錄由 DHCP 自動建立，CNAME 必須由系統管理員手動建立"
+          "A 閮?撠? IPv6嚗NAME 撠? IPv4",
+          "A 閮?撠蜓璈?蝔梯圾?撖阡? IP 雿?嚗?CNAME ?臬?銝餅??亙?撠??啣銝?蜓璈?蝔?,
+          "A 閮??舐?潮摮隞嗉楝?梧?CNAME ?冽蝬脤?隡箸???,
+          "A 閮???DHCP ?芸?撱箇?嚗NAME 敹??梁頂蝯梁恣???撱箇?"
         ],
         correct: 1,
-        explanation: "A (Host) 記錄負責將主機名指向指定的 IPv4 位址。CNAME (Canonical Name) 則是別名記錄，允許將多個名字指向同一個主要的 A 記錄域名。"
+        explanation: "A (Host) 閮?鞎痊撠蜓璈???????IPv4 雿??NAME (Canonical Name) ??亙?閮?嚗?閮勗?憭?摮???銝?蜓閬? A 閮?????
       }
     ],
     sections: [
       {
-        title: "3.1 DNS 服務架設與解析機制",
-        content: `### DNS 常用管理與解析設定
-DNS (Domain Name System) 負責解析域名與 IP 的對應關係。
+        title: "3.1 DNS ???嗉身?圾????,
+        content: `### DNS 撣貊蝞∠??圾?身摰?
+DNS (Domain Name System) 鞎痊閫??????IP ????靽?
 
 \`\`\`powershell
-# ==================== 1. 新增反向解析區域 ====================
-# 以本機網段 192.168.1.0/24 為例，新增反向解析區域
+# ==================== 1. ?啣???閫?????====================
+# 隞交璈雯畾?192.168.1.0/24 ?箔?嚗憓??圾????
 Add-DnsServerPrimaryZone -NetworkId "192.168.1.0/24" -ReplicationScope Forest
 
-# ==================== 2. 設定 DNS 轉寄站 ====================
-# 當網域內主機查詢外部網路時，交給公共 DNS (如 Google/Cloudflare) 轉寄解析
+# ==================== 2. 閮剖? DNS 頧?蝡?====================
+# ?嗥雯?銝餅??亥岷憭蝬脰楝??鈭斤策?砍 DNS (憒?Google/Cloudflare) 頧?閫??
 Set-DnsServerForwarder -IPAddress @("8.8.8.8", "1.1.1.1") -PassThru
 
-# ==================== 3. 新增主機記錄 (A Record) ====================
-# 將 srv-web 指向 192.168.1.80
+# ==================== 3. ?啣?銝餅?閮? (A Record) ====================
+# 撠?srv-web ?? 192.168.1.80
 Add-DnsServerResourceRecordA -Name "srv-web" -ZoneName "lab.local" -IPv4Address "192.168.1.80" -CreatePtr
 
-# ==================== 4. 新增別名記錄 (CNAME) ====================
-# 將 www.lab.local 指向 srv-web.lab.local
+# ==================== 4. ?啣??亙?閮? (CNAME) ====================
+# 撠?www.lab.local ?? srv-web.lab.local
 Add-DnsServerResourceRecordCName -Name "www" -ZoneName "lab.local" -HostNameAlias "srv-web.lab.local"
 
-# ==================== 5. 新增郵件交換記錄 (MX) ====================
-# 設定網域內郵件路由優先權為 10，指向 mail.lab.local
+# ==================== 5. ?啣??萎辣鈭斗?閮? (MX) ====================
+# 閮剖?蝬脣??折隞嗉楝?勗????10嚗???mail.lab.local
 Add-DnsServerResourceRecordMX -Name "@" -ZoneName "lab.local" -MailExchange "mail.lab.local" -Preference 10
 \`\`\``
       },
       {
-        title: "3.2 DHCP 角色部署與配置指南",
-        content: `### DHCP 伺服器部署與作用域配置
-DHCP 用於集中並自動發放 IP 地址給局域網中的用戶端。
+        title: "3.2 DHCP 閫?函蔡??蝵格???,
+        content: `### DHCP 隡箸??券蝵脰?雿??蝵?
+DHCP ?冽?葉銝西???IP ?啣?蝯血??雯銝剔??冽蝡胯?
 
 \`\`\`powershell
-# ==================== 1. 安裝 DHCP 角色功能 ====================
-Write-Host "安裝 DHCP 角色..." -ForegroundColor Cyan
+# ==================== 1. 摰? DHCP 閫? ====================
+Write-Host "摰? DHCP 閫..." -ForegroundColor Cyan
 Install-WindowsFeature -Name DHCP -IncludeManagementTools
 
-# ==================== 2. 在 Active Directory 中授權 DHCP 伺服器 ====================
-# (必須在網域 DC 或有網域系統管理員權限之主機上執行)
+# ==================== 2. ??Active Directory 銝剜?甈?DHCP 隡箸???====================
+# (敹??函雯??DC ??蝬脣?蝟餌絞蝞∠??⊥???銝餅?銝銵?
 $DCName = (Get-ADDomainController).HostName
 $DCIP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -ne '127.0.0.1' -and -not $_.IPAddress.StartsWith('169.254') })[0].IPAddress
 Add-DhcpServerInDC -DnsName $DCName -IPAddress $DCIP
 
-# ==================== 3. 建立網段作用域 (Scope) ====================
-# 建立名為 "Office-LAN" 的 Scope，範圍 192.168.1.100 - 192.168.1.200，子網 24 位元
+# ==================== 3. 撱箇?蝬脫挾雿??(Scope) ====================
+# 撱箇?? "Office-LAN" ??Scope嚗???192.168.1.100 - 192.168.1.200嚗?蝬?24 雿?
 $ScopeName = "Office-LAN"
 $ScopeIP = "192.168.1.0"
 Add-DhcpServerv4Scope -Name $ScopeName -StartRange "192.168.1.100" -EndRange "192.168.1.200" -SubnetMask "255.255.255.0" -State Active
 
-# ==================== 4. 配置 Scope 選項參數 ====================
-# 設定 Option 003: 預設閘道 (Gateway)
+# ==================== 4. ?蔭 Scope ?賊?? ====================
+# 閮剖? Option 003: ?身?? (Gateway)
 Set-DhcpServerv4OptionValue -ScopeId $ScopeIP -OptionId 3 -Value "192.168.1.1"
-# 設定 Option 006: DNS 伺服器指向 DC 本身
+# 閮剖? Option 006: DNS 隡箸??冽???DC ?祈澈
 Set-DhcpServerv4OptionValue -ScopeId $ScopeIP -OptionId 6 -Value $DCIP
-# 設定 Option 015: 網域名稱
+# 閮剖? Option 015: 蝬脣??迂
 Set-DhcpServerv4OptionValue -ScopeId $ScopeIP -OptionId 15 -Value "lab.local"
 
-# ==================== 5. 設定特定設備的 IP 保留區 ====================
-# 依據 MAC 位址 "00-15-5d-01-02-03" 固定指派 IP "192.168.1.150"
+# ==================== 5. 閮剖??孵?閮剖???IP 靽?? ====================
+# 靘? MAC 雿? "00-15-5d-01-02-03" ?箏??晷 IP "192.168.1.150"
 Add-DhcpServerv4Reservation -ScopeId $ScopeIP -IPAddress "192.168.1.150" -ClientId "00-15-5d-01-02-03" -Name "OfficePrinter" -Description "HR Printer Reservation"
 \`\`\``
       }
@@ -350,31 +359,31 @@ Add-DhcpServerv4Reservation -ScopeId $ScopeIP -IPAddress "192.168.1.150" -Client
   },
   {
     id: "ch4_gpo",
-    title: "第四章：群組原則物件 (GPO) 管理與安全性設定",
-    description: "學習群組原則的繼承關係、套用順序，並實作軟體部署、硬碟對應、桌面限制與強化安全性。",
+    title: "蝚砍?蝡?蝢斤????拐辣 (GPO) 蝞∠????冽扯身摰?,
+    description: "摮貊?蝢斤????匱?輸?靽??券?摨?銝血祕雿?擃蝵脯′蝣????ａ??嗉?撘瑕?摰?扼?,
     checklist: [
-      "開啟群組原則管理主控台 (gpmc.msc)",
-      "了解 LSDOU 原則與群組原則的優先權順序",
-      "建立一個測試 GPO 並將其連結 (Link) 到特定的組織單位 (OU)",
-      "實作「限制控制台存取」或「限制命令提示字元」原則",
-      "使用 GPO 喜好設定 (Preferences) 實作自動連線網路磁碟機",
-      "實作防火牆規則與本機安全性帳戶鎖定原則",
-      "使用 gpupdate /force 在用戶端強制更新並用 gpresult /h 產生報告"
+      "??蝢斤???蝞∠?銝餅??(gpmc.msc)",
+      "鈭圾 LSDOU ???黎蝯????芸?甈?摨?,
+      "撱箇?銝?葫閰?GPO 銝血??園?? (Link) ?啁摰?蝯??桐? (OU)",
+      "撖虫????嗆?嗅摮??????嗅隞斗?蝷箏?????,
+      "雿輻 GPO ?末閮剖? (Preferences) 撖虫??芸????蝬脰楝蝤?璈?,
+      "撖虫??脩?????祆?摰?批董?園?摰???,
+      "雿輻 gpupdate /force ?函?嗥垢撘瑕?湔銝衣 gpresult /h ?Ｙ??勗?"
     ],
     quiz: [
       {
-        question: "群組原則的套用順序為「本機 (Local) -> 站台 (Site) -> 網域 (Domain) -> 組織單位 (OU)」。如果同一個設定在網域層級被設定為「停用」，在組織單位 (OU) 被設定為「啟用」，且沒有任何強制或封鎖設定，最後的套用結果會是什麼？",
+        question: "蝢斤??????券?摨?璈?(Local) -> 蝡 (Site) -> 蝬脣? (Domain) -> 蝯??桐? (OU)????銝?身摰蝬脣?撅斤?鋡怨身摰???具??函?蝜雿?(OU) 鋡怨身摰???具?銝??遙雿撥?嗆?撠?閮剖?嚗?敺?憟蝯??隞暻潘?",
         options: [
-          "停用",
-          "啟用",
-          "兩者衝突，該原則失效不套用",
-          "由系統管理員手動決定"
+          "?",
+          "?",
+          "?抵?蝒?閰脣??仃??憟",
+          "?梁頂蝯梁恣???瘙箏?"
         ],
         correct: 1,
-        explanation: "群組原則的套用順序是 LSDOU。後套用的設定會覆蓋先套用的設定。因此，OU 層級（最後套用）的「啟用」設定會覆蓋網域層級（較早套用）的「停用」設定。"
+        explanation: "蝢斤??????券?摨 LSDOU??憟?身摰?閬????函?閮剖???甇歹?OU 撅斤?嚗?敺??剁????具身摰?閬?蝬脣?撅斤?嚗??拙??剁????具身摰?
       },
       {
-        question: "在用戶端電腦上，如果想要立刻套用並同步剛在 DC 上修改過的 GPO 原則，應執行什麼命令？",
+        question: "?函?嗥垢?餉銝?憒??唾?蝡憟銝血?甇亙???DC 銝耨?寥???GPO ??嚗??瑁?隞暻澆隞歹?",
         options: [
           "gpresult /r",
           "gplink -refresh",
@@ -382,63 +391,63 @@ Add-DhcpServerv4Reservation -ScopeId $ScopeIP -IPAddress "192.168.1.150" -Client
           "ipconfig /flushdns"
         ],
         correct: 2,
-        explanation: "gpupdate /force 命令會強迫用戶端電腦向 DC 拉取最新的群組原則物件設定並立刻套用，而不需要等待預設的 90-120 分鐘背景重新整理間告。"
+        explanation: "gpupdate /force ?賭誘?撥餈怎?嗥垢?餉??DC ????啁?蝢斤????拐辣閮剖?銝衣??餃??剁????閬?敺?閮剔? 90-120 ?????渡?????
       }
     ],
     sections: [
       {
-        title: "4.1 GPO 機制與繼承關係",
-        content: `### GPO (Group Policy Object) 機制與運作
-GPO 是管理網域使用者和電腦組態的核心。
+        title: "4.1 GPO 璈?匱?輸?靽?,
+        content: `### GPO (Group Policy Object) 璈??雿?
+GPO ?舐恣?雯?蝙?刻??餉蝯??敹?
 
-### 繼承與覆蓋優先順序 (LSDOU)
+### 蝜潭?????摨?(LSDOU)
 * **L**ocal $\\rightarrow$ **S**ite $\\rightarrow$ **D**omain $\\rightarrow$ **O**U
-* **繼承覆蓋**：後套用者覆蓋前套用者。套用在 OU 上的 GPO，其設定優先權高於套用在 Domain 上的 GPO。
-* **強制套用 (Enforced)**：在父階 GPO 設定「強制」，可防止子 OU 覆蓋該原則。
-* **繼承封鎖 (Block Inheritance)**：子 OU 可設定封鎖，不接受任何父階 GPO（除強制外）。
-* **更新頻率**：網域主機預設每 90~120 分鐘背景整理一次。管理員可在客戶端電腦執行強制指令立即重新整理：
+* **蝜潭閬?**嚗?憟????憟???典 OU 銝? GPO嚗閮剖??芸?甈??澆??典 Domain 銝? GPO??
+* **撘瑕憟 (Enforced)**嚗?園? GPO 閮剖??撥?嗚??舫甇Ｗ? OU 閬?閰脣???
+* **蝜潭撠? (Block Inheritance)**嚗? OU ?航身摰???銝?遙雿??GPO嚗撘瑕憭???
+* **?湔?餌?**嚗雯?蜓璈?閮剜? 90~120 ????渡?銝甈～恣??臬摰Ｘ蝡舫?血銵撥?嗆?隞斤??喲??唳??
   \`\`\`cmd
   gpupdate /force
   \`\`\`
-* **產生 GPO 診斷報告**：
+* **?Ｙ? GPO 閮箸?勗?**嚗?
   \`\`\`cmd
-  # 以 HTML 格式生成該電腦套用的完整 GPO 報告
+  # 隞?HTML ?澆???閰脤?血??函?摰 GPO ?勗?
   gpresult /h gpreport.html
   \`\`\``
       },
       {
-        title: "4.2 常用 GPO 實務配置案例",
-        content: `### 實務 GPO 的 PowerShell 自動化配置
-除了使用 \`gpmc.msc\` 圖形工具手動設定，管理員可使用 \`GroupPolicy\` 模組自動建立與連結 GPO：
+        title: "4.2 撣貊 GPO 撖血??蔭獢?",
+        content: `### 撖血? GPO ??PowerShell ?芸???蝵?
+?支?雿輻 \`gpmc.msc\` ?耦撌亙??閮剖?嚗恣??臭蝙??\`GroupPolicy\` 璅∠??芸?撱箇???? GPO嚗?
 
 \`\`\`powershell
-# ==================== 1. 建立並連結 GPO 至特定 OU ====================
+# ==================== 1. 撱箇?銝阡?? GPO ?喟摰?OU ====================
 Import-Module GroupPolicy
 
 $GPOName = "GPO-BlockUSB-and-CMD"
 $TargetOU = "OU=Users,OU=Taipei,DC=lab,DC=local"
 
-# 建立 GPO
+# 撱箇? GPO
 $NewGPO = New-GPO -Name $GPOName
-# 連結 GPO 到台北 Users OU
+# ??? GPO ?啣??Users OU
 New-GPLink -Name $GPOName -Target $TargetOU
 
-# ==================== 2. 實作本機密碼原則與安全性鎖定 ====================
-# 匯出安全配置範本
+# ==================== 2. 撖虫??祆?撖Ⅳ?????冽折?摰?====================
+# ?臬摰?蔭蝭
 secedit /export /cfg C:\\temp\\sec.cfg
 
-# 編輯 sec.cfg 設定密碼最短長度為 10 位，連續輸入錯 5 次鎖定 30 分鐘：
+# 蝺刻摩 sec.cfg 閮剖?撖Ⅳ??剝摨衣 10 雿????頛詨??5 甈⊿?摰?30 ??嚗?
 # [System Access]
 # MinimumPasswordLength = 10
 # PasswordComplexity = 1
 # LockoutBadCount = 5
 # LockoutDuration = 30
 
-# 重新導入並套用安全原則
+# ?撠銝血??典??典???
 # secedit /configure /db C:\\windows\\security\\database\\secedit.sdb /cfg C:\\temp\\sec.cfg /areas SECURITYPOLICY
 
-# ==================== 3. 用 GPO 喜好設定派發登錄檔阻擋 USB (電腦配置) ====================
-# 設定阻擋隨身碟 (Registry Key: HKLM\\SYSTEM\\CurrentControlSet\\Services\\USBSTOR -> Start 改為 4)
+# ==================== 3. ??GPO ?末閮剖?瘣曄?駁?瑼??USB (?餉?蔭) ====================
+# 閮剖??餅??刻澈蝣?(Registry Key: HKLM\\SYSTEM\\CurrentControlSet\\Services\\USBSTOR -> Start ?寧 4)
 Set-GPRegistryValue -Name $GPOName \
                     -Key "HKLM\\SYSTEM\\CurrentControlSet\\Services\\USBSTOR" \
                     -ValueName "Start" \
@@ -450,62 +459,62 @@ Set-GPRegistryValue -Name $GPOName \
   },
   {
     id: "ch5_file_storage",
-    title: "第五章：檔案與儲存服務 (Share, NTFS & FSRM)",
-    description: "精通共用資料夾權限與 NTFS 權限的加總計算、使用 FSRM 限制容量與檔案格式，以及 DFS 分散式檔案系統部署。",
+    title: "蝚砌?蝡?瑼??摮???(Share, NTFS & FSRM)",
+    description: "蝎暸?刻??冗甈???NTFS 甈???蝮質?蝞蝙??FSRM ?摰寥???獢撘?隞亙? DFS ?撘?獢頂蝯梢蝵脯?,
     checklist: [
-      "在新磁碟區建立共用資料夾，並區分 NTFS 與共用 (Share) 權限",
-      "實作 ABE (存取基礎列舉)，讓無權限的使用者看不到該資料夾",
-      "安裝 FSRM (檔案伺服器資源管理員) 角色",
-      "設定資料夾配額 (Quota)，當容量使用達 90% 時發送通知警告",
-      "建立檔案遮蔽 (File Screen) 阻擋使用者上傳 .mp3, .exe 或勒索軟體常用附檔名",
-      "部署 DFS (分散式檔案系統) 命名空間以統一共用路徑",
-      "設定 DFS 複寫 (Replication) 實作多台檔案伺服器即時同步"
+      "?冽蝤??撱箇??梁鞈?憭橘?銝血???NTFS ???(Share) 甈?",
+      "撖虫? ABE (摮??箇???)嚗??⊥???雿輻??銝閰脰??冗",
+      "摰? FSRM (瑼?隡箸??刻?皞恣?) 閫",
+      "閮剖?鞈?憭暸?憿?(Quota)嚗摰寥?雿輻??90% ??霅血?",
+      "撱箇?瑼??株 (File Screen) ?餅?雿輻????.mp3, .exe ??蝝Ｚ?擃虜?券?瑼?",
+      "?函蔡 DFS (?撘?獢頂蝯? ?賢?蝛粹?隞亦絞銝?梁頝臬?",
+      "閮剖? DFS 銴神 (Replication) 撖虫?憭瑼?隡箸??典??甇?
     ],
     quiz: [
       {
-        question: "若一個使用者對於共用資料夾的「共用權限」為「讀取 (Read)」，而「NTFS 權限」為「修改 (Modify)」，當該使用者透過網路存取該資料夾時，其實際有效權限為何？",
+        question: "?乩??蝙?刻??澆?刻??冗??冽??????(Read)???TFS 甈???耨??(Modify)???嗉府雿輻??蝬脰楝摮?閰脰??冗???嗅祕?????雿?",
         options: [
-          "修改 (Modify)",
-          "讀取 (Read)",
-          "完全控制 (Full Control)",
-          "無權限拒絕存取"
+          "靽格 (Modify)",
+          "霈??(Read)",
+          "摰?批 (Full Control)",
+          "?⊥???蝯???
         ],
         correct: 1,
-        explanation: "當透過網路存取共用資料夾時，最終有效權限是「共用權限」與「NTFS 權限」兩者中「最嚴格 (Most Restrictive)」的那一個。在此例中，讀取比修改嚴格，因此實際權限為「讀取」。"
+        explanation: "?園?蝬脰楝摮??梁鞈?憭暹?嚗?蝯??????冽????TFS 甈???葉???湔 (Most Restrictive)??????甇支?銝哨?霈??靽格?湔嚗?甇文祕???????
       },
       {
-        question: "在 Windows Server 2022 中，如何隱藏使用者沒有讀取權限的共用子資料夾，以防機密目錄名稱外洩？",
+        question: "??Windows Server 2022 銝哨?憒??梯?雿輻?????????梁摮??冗嚗誑?脫?撖??蝔勗?瘣抬?",
         options: [
-          "啟用隱藏屬性 (Hidden Attribute)",
-          "啟用存取基礎列舉 (ABE, Access-Based Enumeration)",
-          "關閉網路瀏覽 (Network Discovery)",
-          "使用 NTFS 拒絕列出目錄內容"
+          "??梯?撅祆?(Hidden Attribute)",
+          "?摮??箇??? (ABE, Access-Based Enumeration)",
+          "??蝬脰楝?汗 (Network Discovery)",
+          "雿輻 NTFS ????桅??批捆"
         ],
         correct: 1,
-        explanation: "存取基礎列舉 (Access-Based Enumeration, ABE) 是共用資料夾的一項功能，啟用後，使用者在瀏覽共用目錄時，只能看見自己擁有讀取權限的資料夾與檔案，無權限的項目將被隱藏。"
+        explanation: "摮??箇??? (Access-Based Enumeration, ABE) ?臬?刻??冗?????踝??敺?雿輻??汗?梁?桅????芾???芸楛??霈????鞈?憭曇?瑼?嚗甈????桀?鋡恍??
       }
     ],
     sections: [
       {
-        title: "5.1 共用與 NTFS 權限計算規則",
-        content: `### 共享資料夾權限與實體安全交集
-共享資料夾的存取權是由「共用權限」和「NTFS 權限」取兩者**交集（最嚴格者）**決定。
+        title: "5.1 ?梁??NTFS 甈?閮?閬?",
+        content: `### ?曹澈鞈?憭暹???撖阡?摰鈭日?
+?曹澈鞈?憭曄?摮?甈?晞?冽????TFS 甈????抵?*鈭日?嚗??湔??**瘙箏???
 
-* **最佳實作建議**：共用權限一律設定為「Everyone -> 完全控制 (Full Control)」或「Authenticated Users -> 變更/讀取」，然後**完全使用 NTFS 權限**進行細部的權限控制，以防多重交集導致邏輯混亂。
+* **?雿喳祕雿遣霅?*嚗?冽???敺身摰?veryone -> 摰?批 (Full Control)???uthenticated Users -> 霈/霈???嗅?**摰雿輻 NTFS 甈?**?脰?蝝圈????塚?隞仿憭?鈭日?撠?摩瘛瑚???
 
-### 使用 PowerShell 設定 ACL 權限與建立共用
-請以系統管理員身分執行以下腳本：
+### 雿輻 PowerShell 閮剖? ACL 甈??遣蝡??
+隢誑蝟餌絞蝞∠??∟澈?銵誑銝?穿?
 
 \`\`\`powershell
-# ==================== 1. 建立實體目錄 ====================
+# ==================== 1. 撱箇?撖阡??桅? ====================
 $Path = "D:\\Shares\\FinanceDocs"
 if (-not (Test-Path $Path)) { New-Item -Path $Path -ItemType Directory -Force }
 
-# ==================== 2. 建立共用並啟用 ABE ====================
+# ==================== 2. 撱箇??梁銝血???ABE ====================
 $ShareName = "Finance"
 New-SmbShare -Name $ShareName -Path $Path -FullAccess "Everyone" -FolderEnumerationMode AccessAllowed
 
-# ==================== 3. 配置 NTFS 權限 (移除繼承，指派新規則) ====================
+# ==================== 3. ?蔭 NTFS 甈? (蝘駁蝜潭嚗?瘣暹閬?) ====================
 $Acl = Get-Acl $Path
 $Acl.SetAccessRuleProtection($true, $true)
 
@@ -523,40 +532,40 @@ Set-Acl -Path $Path -AclObject $Acl
 \`\`\``
       },
       {
-        title: "5.2 檔案伺服器資源管理員 (FSRM) 實務",
-        content: `### FSRM 容量配額與防勒索軟體遮蔽
-FSRM (File Server Resource Manager) 能為資料夾限制配額並阻擋特定檔案。
+        title: "5.2 瑼?隡箸??刻?皞恣? (FSRM) 撖血?",
+        content: `### FSRM 摰寥?????揣頠??株
+FSRM (File Server Resource Manager) ?賜鞈?憭暸??園?憿蒂?餅??孵?瑼???
 
 \`\`\`powershell
-# ==================== 1. 安裝 FSRM 角色功能 ====================
+# ==================== 1. 摰? FSRM 閫? ====================
 Install-WindowsFeature -Name FS-Resource-Manager -IncludeManagementTools
 
-# ==================== 2. 建立資料夾容量配額 (Quota) ====================
-# 為共享目錄設定 10GB 硬式配額 (到達限制不准許寫入)
+# ==================== 2. 撱箇?鞈?憭曉捆??憿?(Quota) ====================
+# ?箏鈭怎?身摰?10GB 蝖砍??? (?圈??銝?閮勗神??
 # New-FsrmQuota -Path "D:\\Shares\\FinanceDocs" -Size 10GB -Description "Limit HR to 10GB"
 
-# ==================== 3. 實作檔案遮蔽 (防勒索軟體加密副檔名) ====================
-# 新增防範勒索軟體常有之加密副檔名群組
+# ==================== 3. 撖虫?瑼??株 (?脣?蝝Ｚ?擃?撖瑼?) ====================
+# ?啣??脩??揣頠?撣豢?銋?撖瑼?蝢斤?
 New-FsrmFileGroup -Name "RansomwareExtensions" -IncludePattern @("*.onion", "*.crypt", "*.locked", "*.encrypted")
 
-# 建立檔案遮蔽，阻擋在此目錄內寫入此類加密檔
+# 撱箇?瑼??株嚗?甇斤?撖怠甇日???瑼?
 New-FsrmFileScreen -Path "D:\\Shares" -FileGroup "RansomwareExtensions" -Active
 \`\`\``
       },
       {
-        title: "5.3 DFS 分散式檔案系統配置",
-        content: `### 部署 DFS 命名空間
-DFS 能將不同伺服器的共享資料夾整合成單一路徑。
+        title: "5.3 DFS ?撘?獢頂蝯梢?蝵?,
+        content: `### ?函蔡 DFS ?賢?蝛粹?
+DFS ?賢?銝?隡箸??函??曹澈鞈?憭暹???桐?頝臬???
 
 \`\`\`powershell
-# ==================== 1. 安裝 DFS 角色功能 ====================
+# ==================== 1. 摰? DFS 閫? ====================
 Install-WindowsFeature -Name FS-DFS-Namespace, FS-DFS-Replication -IncludeManagementTools
 
-# ==================== 2. 建立網域型 DFS 命名空間 ====================
-# 建立路徑為 \\\\lab.local\\DFS-Share 根路徑
+# ==================== 2. 撱箇?蝬脣???DFS ?賢?蝛粹? ====================
+# 撱箇?頝臬???\\\\lab.local\\DFS-Share ?寡楝敺?
 New-DfsnRoot -Path "\\\\lab.local\\DFS-Share" -TargetPath "\\\\SRV-DC-01\\Finance" -Type DomainV2
 
-# ==================== 3. 在命名空間中新增虛擬連結 ====================
+# ==================== 3. ?典?征?葉?啣????? ====================
 New-DfsnFolder -Path "\\\\lab.local\\DFS-Share\\HR" -TargetPath "\\\\SRV-FS-02\\HR-Docs"
 \`\`\``
       }
@@ -564,65 +573,65 @@ New-DfsnFolder -Path "\\\\lab.local\\DFS-Share\\HR" -TargetPath "\\\\SRV-FS-02\\
   },
   {
     id: "ch6_hyperv",
-    title: "第六章：Hyper-V 虛擬化平台架設與 VM 管理",
-    description: "開啟 Hyper-V 角色，配置外部、內部與私有虛擬交換器，建立 VM、動態記憶體及檢查點管理。",
+    title: "蝚砍蝡?Hyper-V ??像?唳閮剛? VM 蝞∠?",
+    description: "?? Hyper-V 閫嚗?蝵桀??具?刻?蝘??鈭斗??剁?撱箇? VM?????園??炎?仿?蝞∠???,
     checklist: [
-      "確認 CPU 已開啟硬體輔助虛擬化 (Intel VT-x / AMD-V) 與 SLAT",
-      "安裝 Hyper-V 角色並重新啟動主機",
-      "在虛擬交換器管理員中建立外部 (External) 虛擬交換器",
-      "建立一台虛擬機器 (VM)，指派 CPU 核心、動態記憶體與虛擬硬碟 (VHDX)",
-      "掛載作業系統 ISO 映像檔並啟動 VM 安裝客體作業系統 (Guest OS)",
-      "實作 Hyper-V 檢查點 (Checkpoint) 進行狀態備份與還原",
-      "設定巢狀虛擬化 (Nested Virtualization) 支援在 VM 中再開 VM"
+      "蝣箄? CPU 撌脤??′擃??抵??砍? (Intel VT-x / AMD-V) ??SLAT",
+      "摰? Hyper-V 閫銝阡??啣??蜓璈?,
+      "?刻??砌漱?蝞∠??∩葉撱箇?憭 (External) ?鈭斗???,
+      "撱箇?銝?啗??祆???(VM)嚗?瘣?CPU ?詨??????園????祉′蝣?(VHDX)",
+      "??雿平蝟餌絞 ISO ??瑼蒂?? VM 摰?摰ａ?雿平蝟餌絞 (Guest OS)",
+      "撖虫? Hyper-V 瑼Ｘ暺?(Checkpoint) ?脰????隞質???",
+      "閮剖?撌Ｙ????(Nested Virtualization) ?舀??VM 銝剖???VM"
     ],
     quiz: [
       {
-        question: "在 Hyper-V 中，如果希望虛擬機器 (VM) 能夠與實體網路上的其他實體主機以及外部路由器直接進行通訊，應選擇哪一種虛擬交換器 (Virtual Switch) 類型？",
+        question: "??Hyper-V 銝哨?憒?撣??璈 (VM) ?賢??祕擃雯頝臭??隞祕擃蜓璈誑???刻楝?勗?湔?脰???嚗??豢??芯?蝔株??砌漱? (Virtual Switch) 憿?嚗?,
         options: [
-          "外部虛擬交換器 (External Switch)",
-          "內部虛擬交換器 (Internal Switch)",
-          "私有虛擬交換器 (Private Switch)",
-          "全域虛擬交換器 (Global Switch)"
+          "憭?鈭斗???(External Switch)",
+          "?折?鈭斗???(Internal Switch)",
+          "蝘??鈭斗???(Private Switch)",
+          "?典??鈭斗???(Global Switch)"
         ],
         correct: 0,
-        explanation: "外部交換器 (External) 會與伺服器的實體網路卡進行繫結，使虛擬機器能像實體機一樣，直接存取外網與實體 LAN 上的設備。"
+        explanation: "憭鈭斗???(External) ??隡箸??函?撖阡?蝬脰楝?⊿脰?蝜怎?嚗蝙?璈?賢?撖阡?璈?璅???湔摮?憭雯?祕擃?LAN 銝?閮剖???
       },
       {
-        question: "Hyper-V 的「生產檢查點 (Production Checkpoints)」與「標準檢查點 (Standard Checkpoints)」主要不同之處在哪？",
+        question: "Hyper-V ???Ｘ炎?仿? (Production Checkpoints)????皞炎?仿? (Standard Checkpoints)?蜓閬?????迎?",
         options: [
-          "生產檢查點不佔用磁碟空間",
-          "生產檢查點會使用 Guest OS 內的磁碟陰影複製服務 (VSS) 來建立資料一致性的備份，而標準檢查點是捕捉硬體狀態與記憶體",
-          "標準檢查點僅支援 Linux 系統",
-          "生產檢查點只能在虛擬機關機時建立"
+          "?瑼Ｘ暺?雿蝤?蝛粹?",
+          "?瑼Ｘ暺?雿輻 Guest OS ?抒?蝤??啣蔣銴ˊ?? (VSS) 靘遣蝡????湔抒??遢嚗?皞炎?仿??舀??′擃???閮擃?,
+          "璅?瑼Ｘ暺??舀 Linux 蝟餌絞",
+          "?瑼Ｘ暺?賢?璈?璈?撱箇?"
         ],
         correct: 1,
-        explanation: "生產檢查點使用客體作業系統中的備份技術（Windows 的 VSS 或 Linux 的 File System Freeze）來建立不包含記憶體狀態的應用程式一致性快照，這在生產環境中進行還原時更安全穩定。標準檢查點則捕捉 VM 的記憶體與 CPU 狀態，可能導致資料在特定資料庫套件中產生不一致。"
+        explanation: "?瑼Ｘ暺蝙?典恥擃?璆剔頂蝯曹葉??隞賣?銵?Windows ??VSS ??Linux ??File System Freeze嚗?撱箇?銝??怨??園?????蝔?銝?湔批翰?改????啣?銝剝脰????摰蝛拙???皞炎?仿?????VM ???園???CPU ????航撠鞈??函摰??澈憟辣銝剔??銝?氬?
       }
     ],
     sections: [
       {
-        title: "6.1 虛擬交換器 (Virtual Switch) 網路分類",
-        content: `### Hyper-V 網路拓撲結構
-虛擬機器與實體主機、其他虛擬機器，以及外部實體網路的通訊，皆由虛擬交換器轉送：
+        title: "6.1 ?鈭斗???(Virtual Switch) 蝬脰楝??",
+        content: `### Hyper-V 蝬脰楝?蝯?
+?璈?祕擃蜓璈隞??祆??剁?隞亙?憭撖阡?蝬脰楝??嚗??梯??砌漱?頧?
 
-* **外部 (External)**：綁定實體網卡，VM 具有對應外部網路的實體 IP/DHCP IP。可用於對外提供服務。
-* **內部 (Internal)**：僅限 VM 之間、以及 VM 與本機 Hyper-V Host 實體主機通訊。
-* **私有 (Private)**：僅限 VM 之間通訊，連本機實體主機都無法連接，適合封閉安全實驗室。`
+* **憭 (External)**嚗?摰祕擃雯?∴?VM ?瑟?撠?憭蝬脰楝?祕擃?IP/DHCP IP??冽撠???????
+* **?折 (Internal)**嚗???VM 銋??誑??VM ?璈?Hyper-V Host 撖阡?銝餅?????
+* **蝘? (Private)**嚗???VM 銋???嚗?璈祕擃蜓璈?⊥???嚗?????典祕撽恕?
       },
       {
-        title: "6.2 建立與優化 VM 實務",
-        content: `### Hyper-V 角色安裝與 VM 自動建置腳本
-請在啟用虛擬化擴充功能 (Intel VT-x / AMD-V) 的主機上執行以下指令：
+        title: "6.2 撱箇????VM 撖血?",
+        content: `### Hyper-V 閫摰???VM ?芸?撱箇蔭?單
+隢???????(Intel VT-x / AMD-V) ?蜓璈??瑁?隞乩??誘嚗?
 
 \`\`\`powershell
-# ==================== 1. 安裝 Hyper-V 角色並重啟 ====================
+# ==================== 1. 摰? Hyper-V 閫銝阡???====================
 # Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
 
-# ==================== 2. 建立虛擬網路交換器 ====================
+# ==================== 2. 撱箇??蝬脰楝鈭斗???====================
 $NetAdapter = Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | Select-Object -First 1
 New-VMSwitch -Name "MyExternalSwitch" -NetAdapterName $NetAdapter.Name -AllowManagementOS $true
 
-# ==================== 3. 快速建立虛擬機器 (VM) ====================
+# ==================== 3. 敹恍遣蝡??祆???(VM) ====================
 $VMName = "VM-WebServer"
 $VHDXPath = "D:\\Hyper-V\\VHDs\\$VMName.vhdx"
 
@@ -633,7 +642,7 @@ Set-VMMemory -VMName $VMName -DynamicMemoryEnabled $true -MinimumBytes 512MB -St
 Set-VMProcessor -VMName $VMName -Count 2
 Set-VMDvdDrive -VMName $VMName -Path "D:\\ISOs\\WindowsServer2022.iso"
 
-# ==================== 4. 啟用巢狀虛擬化 (選用) ====================
+# ==================== 4. ?撌Ｙ????(?貊) ====================
 # Set-VMProcessor -VMName $VMName -ExposeVirtualizationExtensions $true
 \`\`\``
       }
@@ -641,52 +650,52 @@ Set-VMDvdDrive -VMName $VMName -Path "D:\\ISOs\\WindowsServer2022.iso"
   },
   {
     id: "ch7_iis",
-    title: "第七章：IIS 網頁伺服器架設與 HTTPS 安全憑證",
-    description: "部署網頁伺服器 IIS、架設多個網站（利用 Bindings 與主機標頭）、申請自我簽署憑證並設定 SSL/HTTPS 加密連線。",
+    title: "蝚砌?蝡?IIS 蝬脤?隡箸??冽閮剛? HTTPS 摰??",
+    description: "?函蔡蝬脤?隡箸???IIS?閮剖??雯蝡??拍 Bindings ?蜓璈??哨??隢?偷蝵脫?霅蒂閮剖? SSL/HTTPS ???????,
     checklist: [
-      "安裝 Web 伺服器 (IIS) 角色及相關開發與安全模組",
-      "在 C: 槽下建立自訂網頁目錄，並取代預設的 iisstart.htm 測試頁面",
-      "在 DNS 伺服器中為網站註冊別名或 A 記錄",
-      "在 IIS 中建立新網站，並使用「主機名稱 (Host Header)」實作單一 IP 跑多個網站",
-      "使用 IIS 管理員產生自我簽署憑證 (Self-Signed Certificate)",
-      "新增 HTTPS (Port 443) 綁定並套用該 SSL 憑證",
-      "設定 IIS URL 重新導向 (Redirect) 讓 HTTP 強制導向至 HTTPS"
+      "摰? Web 隡箸???(IIS) 閫????潸?摰璅∠?",
+      "??C: 瑽賭?撱箇??芾?蝬脤??桅?嚗蒂?誨?身??iisstart.htm 皜祈岫?",
+      "??DNS 隡箸??其葉?箇雯蝡酉??? A 閮?",
+      "??IIS 銝剖遣蝡蝬脩?嚗蒂雿輻?蜓璈?蝔?(Host Header)?祕雿銝 IP 頝??雯蝡?,
+      "雿輻 IIS 蝞∠??∠??偷蝵脫?霅?(Self-Signed Certificate)",
+      "?啣? HTTPS (Port 443) 蝬?銝血??刻府 SSL ??",
+      "閮剖? IIS URL ?撠? (Redirect) 霈?HTTP 撘瑕撠???HTTPS"
     ],
     quiz: [
       {
-        question: "在只有一個實體 IP 位址的伺服器上，如果想要同時架設並運作兩個不同的網站（例如 www.siteA.com 與 www.siteB.com），在 IIS 中應透過什麼機制來區分客戶端的連線？",
+        question: "?典???祕擃?IP 雿??撩?銝?憒??唾????嗉身銝阡?雿????蝬脩?嚗?憒?www.siteA.com ??www.siteB.com嚗???IIS 銝剜???隞暻潭??嗡???恥?嗥垢???嚗?,
         options: [
-          "應用程式集區 (Application Pools)",
-          "主機標頭名稱 (Host Headers / Bindings)",
-          "不同的實體磁碟路徑",
-          "修改 Windows 登錄檔的 Port 號限制"
+          "?蝔??? (Application Pools)",
+          "銝餅?璅?迂 (Host Headers / Bindings)",
+          "銝??祕擃?蝣楝敺?,
+          "靽格 Windows ?駁?瑼? Port ????
         ],
         correct: 1,
-        explanation: "主機標頭名稱 (Host Header) 綁定允許 IIS 讀取 HTTP 請求標頭中的 Host 欄位，以此判斷要將請求交給哪一個網站處理，這讓單一 IP 綁定多個網域名稱變得可行。"
+        explanation: "銝餅?璅?迂 (Host Header) 蝬??迂 IIS 霈??HTTP 隢?璅銝剔? Host 甈?嚗誑甇文?瑁?撠?瘙漱蝯血銝?雯蝡??????桐? IP 蝬?憭雯??蝔梯?敺銵?
       },
       {
-        question: "為什麼在生產環境中不建議使用 IIS 生成的「自我簽署憑證 (Self-Signed Certificate)」來提供公開 HTTPS 服務？",
+        question: "?箔?暻澆??啣?銝凋?撱箄降雿輻 IIS ????偷蝵脫?霅?(Self-Signed Certificate)?????祇? HTTPS ??嚗?,
         options: [
-          "因為自我簽署憑證不支援 AES 加密演算法",
-          "因為它無法在 Windows Server 上安裝",
-          "因為它不是由受信任的第三方憑證授權單位 (CA) 簽發，客戶端瀏覽器會顯示高度不信任的安全警告",
-          "因為它的有效期只有 30 天"
+          "??芣?蝪賜蔡??銝??AES ??瞍?瘜?,
+          "?摰瘜 Windows Server 銝?鋆?,
+          "?摰??舐?縑隞餌?蝚砌??寞?霅?甈雿?(CA) 蝪賜嚗恥?嗥垢?汗?冽?憿舐內擃漲銝縑隞餌?摰霅血?",
+          "?摰??????30 憭?
         ],
         correct: 2,
-        explanation: "自我簽署憑證是自簽自證，客體電腦的核心信任根憑證清單中沒有這張憑證的簽發者，因此瀏覽器會跳出警告。公開網站應向 GlobalSign、Let's Encrypt 等受信任的 CA 申請憑證。"
+        explanation: "?芣?蝪賜蔡???航蝪質霅?摰ａ??餉?敹縑隞餅??皜銝剜??撐???偷?潸??迨?汗?冽?頝喳霅血???雯蝡???GlobalSign?et's Encrypt 蝑?靽∩遙??CA ?唾?????
       }
     ],
     sections: [
       {
-        title: "7.1 IIS 基礎建置與主機標頭實務",
-        content: `### IIS 安裝與主機標頭虛擬主機
-主機標頭 (Host Header) 綁定允許您使用單一實體 IP 位址架設無限多個不同網名的網站。
+        title: "7.1 IIS ?箇?撱箇蔭?蜓璈??剖祕??,
+        content: `### IIS 摰??蜓璈??剛??砌蜓璈?
+銝餅?璅 (Host Header) 蝬??迂?其蝙?典銝撖阡? IP 雿??嗉身?⊿?憭??雯??蝬脩???
 
 \`\`\`powershell
-# ==================== 1. 安裝 IIS 角色功能 ====================
+# ==================== 1. 摰? IIS 閫? ====================
 Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 
-# ==================== 2. 建立實體目錄與測試首頁 ====================
+# ==================== 2. 撱箇?撖阡??桅??葫閰阡???====================
 $Site1Path = "C:\\inetpub\\app1"
 $Site2Path = "C:\\inetpub\\app2"
 
@@ -694,7 +703,7 @@ New-Item -Path $Site1Path, $Site2Path -ItemType Directory -Force
 New-Item -Path "$Site1Path\\index.html" -ItemType File -Value "<h1>Welcome to App 1</h1>" -Force
 New-Item -Path "$Site2Path\\index.html" -ItemType File -Value "<h1>Welcome to App 2</h1>" -Force
 
-# ==================== 3. 在 IIS 中建立不同網站並繫結主機名稱 ====================
+# ==================== 3. ??IIS 銝剖遣蝡??雯蝡蒂蝜怎?銝餅??迂 ====================
 Import-Module WebAdministration
 Remove-Website -Name "Default Web Site"
 
@@ -703,16 +712,16 @@ New-Website -Name "App2-Site" -PhysicalPath $Site2Path -Port 80 -HostHeader "app
 \`\`\``
       },
       {
-        title: "7.2 HTTPS 與 SSL 憑證配置",
-        content: `### 一鍵配置 HTTPS 與 SSL 憑證繫結
-請在 IIS 伺服器上複製以下腳本，將自動生成自我簽署 SSL 安全性憑證，並將其綁定至您的網站：
+        title: "7.2 HTTPS ??SSL ???蔭",
+        content: `### 銝?菟?蝵?HTTPS ??SSL ??蝜怎?
+隢 IIS 隡箸??其?銴ˊ隞乩??單嚗??芸????芣?蝪賜蔡 SSL 摰?扳?霅?銝血??嗥?摰?函?蝬脩?嚗?
 
 \`\`\`powershell
-# ==================== 1. 產生自我簽署憑證 ====================
+# ==================== 1. ?Ｙ??芣?蝪賜蔡?? ====================
 $DnsName = "app1.lab.local"
 $Cert = New-SelfSignedCertificate -DnsName $DnsName -CertStoreLocation "cert:\\LocalMachine\\My" -FriendlyName "IIS-$DnsName-SSL"
 
-# ==================== 2. 設定 HTTPS Port 443 綁定與證書繫結 ====================
+# ==================== 2. 閮剖? HTTPS Port 443 蝬????貊鼠蝯?====================
 $Thumbprint = $Cert.Thumbprint
 
 Import-Module WebAdministration
@@ -722,27 +731,27 @@ $Path = "IIS:\\SslBindings\\0.0.0.0!443"
 Get-Item -Path "cert:\\LocalMachine\\My\\$Thumbprint" | New-Item -Path $Path -Force
 Set-ItemProperty -Path "IIS:\\Sites\\App1-Site" -Name bindings -Value (@{protocol="https";bindingInformation="*:443:$DnsName"})
 
-Write-Host "HTTPS 繫結完成！" -ForegroundColor Green
+Write-Host "HTTPS 蝜怎?摰?嚗? -ForegroundColor Green
 \`\`\``
       }
     ]
   },
   {
     id: "ch8_security_wsus",
-    title: "第八章：防火牆、安全稽核與 WSUS 更新管理",
-    description: "學習 Windows 防火牆進階設定、設定 GPO 安全稽核原則追蹤登入事件，以及建置 WSUS 派發更新。",
+    title: "蝚砍蝡??脩???函里?貉? WSUS ?湔蝞∠?",
+    description: "摮貊? Windows ?脩?脤?閮剖??身摰?GPO 摰蝔賣??餈質馱?餃鈭辣嚗誑?遣蝵?WSUS 瘣曄?湔??,
     checklist: [
-      "開啟進階安全 Windows 防火牆，設定自訂入站 (Inbound) 規則",
-      "啟用網域群組原則中的「稽核登入事件」與「稽核目錄服務存取」",
-      "在事件檢視器中篩選並分析 Event ID 4624 (登入成功) 與 4625 (登入失敗)",
-      "安裝 Windows Server Update Services (WSUS) 角色與配置資料庫",
-      "設定 WSUS 同步排程與選擇欲下載的產品更新分類",
-      "使用 GPO 設定客戶端電腦自動向本機 WSUS 伺服器回報並下載更新",
-      "在 WSUS 控制台建立電腦群組並核准 (Approve) 測試更新更新檔"
+      "???脤?摰 Windows ?脩??閮剖??芾??亦? (Inbound) 閬?",
+      "?蝬脣?蝢斤???銝剔??里?貊?乩?隞嗚??里?貊??????,
+      "?其?隞嗆炎閬銝剔祟?訾蒂?? Event ID 4624 (?餃??) ??4625 (?餃憭望?)",
+      "摰? Windows Server Update Services (WSUS) 閫??蝵株??澈",
+      "閮剖? WSUS ?郊????炬銝????啣?憿?,
+      "雿輻 GPO 閮剖?摰Ｘ蝡舫?西???祆? WSUS 隡箸??典??曹蒂銝??湔",
+      "??WSUS ?批?啣遣蝡?衣黎蝯蒂?詨? (Approve) 皜祈岫?湔?湔瑼?
     ],
     quiz: [
       {
-        question: "在 Windows 安全事件稽核中，哪一個事件識別碼 (Event ID) 代表「帳戶登入失敗」（常用於抓取暴力破解攻擊）？",
+        question: "??Windows 摰鈭辣蝔賣銝哨??芯???隞嗉??亦Ⅳ (Event ID) 隞?”?董?嗥?亙仃??撣貊?潭???閫???嚗?,
         options: [
           "Event ID 4624",
           "Event ID 4625",
@@ -750,28 +759,28 @@ Write-Host "HTTPS 繫結完成！" -ForegroundColor Green
           "Event ID 7036"
         ],
         correct: 1,
-        explanation: "Windows 安全性記錄中，Event ID 4624 代表登入成功，而 Event ID 4625 代表登入失敗（An account failed to log on）。Event ID 4720 則是建立新使用者帳戶。"
+        explanation: "Windows 摰?扯??葉嚗vent ID 4624 隞?”?餃??嚗?Event ID 4625 隞?”?餃憭望?嚗n account failed to log on嚗vent ID 4720 ?撱箇??唬蝙?刻董?嗚?
       },
       {
-        question: "若要讓企業內部的數百台用戶端電腦改向自建的 WSUS 伺服器取得更新，而不是直接連上微軟官網下載，最有效的配置方式 homes 點選？",
+        question: "?亥?霈?璆剖?函??貊?啁?嗥垢?餉?孵??芸遣??WSUS 隡箸??典?敺?堆????舐?仿??敺株?摰雯銝?嚗?????蝵格撘?homes 暺嚗?,
         options: [
-          "定時手動修改用戶端電腦的 Host 檔案",
-          "設定 Active Directory 群組原則 (GPO) 的「指定內部 Microsoft 更新服務位置」",
-          "在防火牆封鎖所有微軟更新伺服器的 IP 網段",
-          "在 DHCP 伺服器中設定額外的更新選項參數"
+          "摰???靽格?冽蝡舫?衣? Host 瑼?",
+          "閮剖? Active Directory 蝢斤??? (GPO) ??摰??Microsoft ?湔??雿蔭??,
+          "?券?怎?撠???凝頠?唬撩???IP 蝬脫挾",
+          "??DHCP 隡箸??其葉閮剖?憿???圈????
         ],
         correct: 1,
-        explanation: "透過 GPO 中「電腦設定\\原則\\系統管理範本\\Windows 元件\\Windows Update\\指定內部 Microsoft 更新服務位置」設定，輸入 WSUS 的網址（例如 http://srv-wsus:8530），即可強制用戶端向 WSUS 註冊與下載更新。"
+        explanation: "?? GPO 銝准?西身摰\??\\蝟餌絞蝞∠?蝭\\Windows ?辣\\Windows Update\\???折 Microsoft ?湔??雿蔭?身摰?頛詨 WSUS ?雯?嚗?憒?http://srv-wsus:8530嚗??喳撘瑕?冽蝡臬? WSUS 閮餃???頛?啜?
       }
     ],
     sections: [
       {
-        title: "8.1 進階安全 Windows 防火牆與事件稽核",
-        content: `### 防火牆進階設定與事件檢索
-防火牆阻擋外部攻擊，安全性稽核則提供事後追查的軌跡。
+        title: "8.1 ?脤?摰 Windows ?脩??鈭辣蝔賣",
+        content: `### ?脩?脤?閮剖???隞嗆炎蝝?
+?脩????冽??摰?抒里?詨???鈭?餈賣??頝～?
 
 \`\`\`powershell
-# ==================== 1. 自訂防火牆規則 ====================
+# ==================== 1. ?芾??脩????====================
 New-NetFirewallRule -Name "AllowSQLInbound" \
                     -DisplayName "Allow SQL Server Port 1433" \
                     -Direction Inbound \
@@ -780,7 +789,7 @@ New-NetFirewallRule -Name "AllowSQLInbound" \
                     -RemoteAddress "192.168.1.0/24" \
                     -Action Allow
 
-# ==================== 2. 用 PowerShell 篩選安全性登入事件 ====================
+# ==================== 2. ??PowerShell 蝭拚摰?抒?乩?隞?====================
 Get-WinEvent -FilterHashtable @{LogName='Security';ID=4625} -MaxEvents 20 | 
     Select-Object TimeCreated, 
                   @{Name="Username";Expression={$_.Properties[5].Value}},
@@ -788,15 +797,15 @@ Get-WinEvent -FilterHashtable @{LogName='Security';ID=4625} -MaxEvents 20 |
 \`\`\``
       },
       {
-        title: "8.2 WSUS 更新伺服器部署指南",
-        content: `### 部署企業內網更新服務 (WSUS)
-自建更新伺服器，集中控制補丁核准，節省外網頻寬。
+        title: "8.2 WSUS ?湔隡箸??券蝵脫???,
+        content: `### ?函蔡隡平?抒雯?湔?? (WSUS)
+?芸遣?湔隡箸??剁??葉?批鋆??詨?嚗???蝬脤撖研?
 
 \`\`\`powershell
-# ==================== 1. 安裝 WSUS 角色功能 ====================
+# ==================== 1. 摰? WSUS 閫? ====================
 Install-WindowsFeature -Name UpdateServices, UpdateServices-UI -IncludeManagementTools
 
-# ==================== 2. WSUS 初始化設定與下載路徑指定 ====================
+# ==================== 2. WSUS ???身摰?銝?頝臬??? ====================
 New-Item -Path "D:\\WSUS-Updates" -ItemType Directory -Force
 & "C:\\Program Files\\Update Services\\Tools\\wsusutil.exe" postinstall CONTENT_DIR="D:\\WSUS-Updates"
 \`\`\``
@@ -805,19 +814,19 @@ New-Item -Path "D:\\WSUS-Updates" -ItemType Directory -Force
   },
   {
     id: "ch9_powershell",
-    title: "第九章：PowerShell 自動化維護與維護排程",
-    description: "學習常用 PowerShell 指令、撰寫管理指令碼，並結合工作排程器 (Task Scheduler) 實現伺服器自動化維護。",
+    title: "蝚砌?蝡?PowerShell ?芸??雁霅瑁?蝬剛風??",
+    description: "摮貊?撣貊 PowerShell ?誘?撖怎恣??隞斤Ⅳ嚗蒂蝯?撌乩?????(Task Scheduler) 撖衣隡箸??刻??蝬剛風??,
     checklist: [
-      "掌握 PowerShell Pipeline (管線 |) 與物件過濾 (Where-Object) 用法",
-      "撰寫一個自動清理磁碟暫存檔與 IIS Log 的指令碼 (.ps1)",
-      "撰寫備份指定資料夾並自動壓縮為 ZIP 的腳本",
-      "設定 Windows 工作排程器 (Task Scheduler) 定期執行該腳本",
-      "設定工作排程執行身分為 SYSTEM 並開啟「不論使用者登入與否均執行」",
-      "利用 PowerShell 排程定期檢查硬碟剩餘空間，低於 15% 時發送 Event Log"
+      "? PowerShell Pipeline (蝞∠? |) ?隞園?瞈?(Where-Object) ?冽?",
+      "?啣神銝?????蝣摮???IIS Log ??隞斤Ⅳ (.ps1)",
+      "?啣神?遢??鞈?憭曆蒂?芸?憯葬??ZIP ???,
+      "閮剖? Windows 撌乩?????(Task Scheduler) 摰??瑁?閰脰??,
+      "閮剖?撌乩????瑁?頨怠???SYSTEM 銝阡???隢蝙?刻?亥??血??瑁???,
+      "?拍 PowerShell ??摰?瑼Ｘ蝖祉??拚?蝛粹?嚗???15% ???Event Log"
     ],
     quiz: [
       {
-        question: "在 Windows Server 中，如果您寫了一個 PowerShell 腳本 (.ps1) 並想用「工作排程器」在背景自動執行，應在「啟動程式」的引數 (Arguments) 中如何設定？",
+        question: "??Windows Server 銝哨?憒??典神鈭???PowerShell ?單 (.ps1) 銝行?具極雿?蝔???芸??瑁?嚗??具???撘?撘 (Arguments) 銝剖?雿身摰?",
         options: [
           "-File C:\\Scripts\\backup.ps1",
           "-ExecutionPolicy Bypass -File C:\\Scripts\\backup.ps1",
@@ -825,43 +834,43 @@ New-Item -Path "D:\\WSUS-Updates" -ItemType Directory -Force
           "-Console -Path C:\\Scripts\\backup.ps1"
         ],
         correct: 1,
-        explanation: "Windows 預設的執行原則限制了腳本執行。使用 -ExecutionPolicy Bypass 參數可以暫時繞過限制，順利執行備份腳本，而不需要全域降低伺服器的安全限制。"
+        explanation: "Windows ?身?銵????嗡??單?瑁??蝙??-ExecutionPolicy Bypass ??臭誑?急?蝜??嚗??拙銵?隞質?穿????閬??雿撩????券??嗚?
       },
       {
-        question: "PowerShell 指令中，要將前一個指令輸出的物件傳遞給下一個指令進行篩選或處理，應該使用哪一個符號？",
+        question: "PowerShell ?誘銝哨?閬?????隞方撓?箇??拐辣?喲?蝯虫?銝??隞日脰?蝭拚?????府雿輻?芯??泵??",
         options: [
-          "大於符號 (>)",
-          "加號 (+)",
-          "管線符號 (|)",
-          "百分比符號 (%)"
+          "憭扳蝚西? (>)",
+          "?? (+)",
+          "蝞∠?蝚西? (|)",
+          "?曉?瘥泵??(%)"
         ],
         correct: 2,
-        explanation: "管線符號 (|) 是 PowerShell 的靈魂，它將左側 Cmdlet 輸出的「物件」傳遞給右側的 Cmdlet，供其進行排序、過濾（Where-Object）或輸出轉換（Export-Csv）。"
+        explanation: "蝞∠?蝚西? (|) ??PowerShell ??擳?摰?撌血 Cmdlet 頛詨?隞嗚?策?喳??Cmdlet嚗??園脰?????瞈橘?Where-Object嚗?頛詨頧?嚗xport-Csv嚗?
       }
     ],
     sections: [
       {
-        title: "9.1 PowerShell 核心語法與管道串聯",
-        content: `### PowerShell 物件管線實務
-PowerShell 核心精髓在於傳遞「強型別物件」而非純文字，透過 Pipeline (\`|\`) 可以快速關聯多個任務Task。
+        title: "9.1 PowerShell ?詨?隤??恣?葡??,
+        content: `### PowerShell ?拐辣蝞∠?撖血?
+PowerShell ?詨?蝎暸??冽?喲??撥??拐辣??蝝?摮??? Pipeline (\`|\`) ?臭誑敹恍??臬??遙?ask??
 
 \`\`\`powershell
-# ==================== 1. 篩選與排序 CPU 佔用最高的行程 ====================
+# ==================== 1. 蝭拚??摨?CPU 雿?擃?銵? ====================
 Get-Process | Where-Object { $_.WorkingSet -gt 200MB } | Sort-Object WorkingSet -Descending | Format-Table ProcessName, Id, CPU, WorkingSet
 
-# ==================== 2. 批次查詢關閉中的服務 ====================
+# ==================== 2. ?寞活?亥岷??銝剔??? ====================
 Get-Service | Where-Object { $_.StartType -eq 'Automatic' -and $_.Status -eq 'Stopped' } | Select-Object DisplayName, Name
 \`\`\``
       },
       {
-        title: "9.2 自動化維護腳本與工作排程器實作",
-        content: `### 實用自動化維護：定時清理 IIS 日誌與排程設定
-IIS 的記錄檔（預設在 \`C:\\inetpub\\logs\\LogFiles\`）會隨著時間堆積爆滿 C 槽。
+        title: "9.2 ?芸??雁霅瑁?祈?撌乩????典祕雿?,
+        content: `### 撖衣?芸??雁霅瘀?摰?皜? IIS ?亥???蝔身摰?
+IIS ????嚗?閮剖 \`C:\\inetpub\\logs\\LogFiles\`嚗??刻??????遛 C 瑽賬?
 
-請將以下指令存為 \`C:\\Scripts\\Clean-IISLogs.ps1\`，此腳本會自動刪除超過 30 天的 \`.log\` 檔：
+隢?隞乩??誘摮 \`C:\\Scripts\\Clean-IISLogs.ps1\`嚗迨?單???方???30 憭拍? \`.log\` 瑼?
 
 \`\`\`powershell
-# ==================== 1. 建立自動清理指令碼 ====================
+# ==================== 1. 撱箇??芸?皜??誘蝣?====================
 $LogPath = "C:\\inetpub\\logs\\LogFiles"
 $Days = 30
 $LimitDate = (Get-Date).AddDays(-$Days)
@@ -872,7 +881,7 @@ if (Test-Path $LogPath) {
         Remove-Item -Force -Verbose
 }
 
-# ==================== 2. 註冊至工作排程器 (Task Scheduler) ====================
+# ==================== 2. 閮餃??喳極雿?蝔 (Task Scheduler) ====================
 $Action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File C:\\Scripts\\Clean-IISLogs.ps1"
 $Trigger = New-ScheduledTaskTrigger -Daily -At "3:00AM"
 $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
@@ -884,55 +893,55 @@ Register-ScheduledTask -TaskName "AutoCleanIISLogs" -Action $Action -Trigger $Tr
   },
   {
     id: "ch10_backup",
-    title: "第十章：備份、還原與災害復原 (Disaster Recovery)",
-    description: "學習安裝 Windows Server Backup 工具、設定排程備份、執行裸機還原 (BMR)，以及啟用 Active Directory 資源回收筒。",
+    title: "蝚砍?蝡??遢?????賢拿敺拙? (Disaster Recovery)",
+    description: "摮貊?摰? Windows Server Backup 撌亙?身摰?蝔?隞賬銵ㄧ璈???(BMR)嚗誑????Active Directory 鞈??蝑?,
     checklist: [
-      "安裝 Windows Server Backup 角色功能",
-      "建立一次性備份 (Backup Once) 測試儲存到外接硬碟或網路共用資料夾",
-      "設定每日定時備份計畫，包含系統狀態 (System State) 與裸機復原 (BMR) 資料",
-      "在 Active Directory 中開啟「AD 資源回收筒 (AD Recycle Bin)」功能",
-      "測試在 AD 中刪除使用者帳戶，並在不重啟 DC 的情況下用資源回收筒還原",
-      "了解如何進入目錄服務還原模式 (DSRM) 還原受損的 AD 資料庫"
+      "摰? Windows Server Backup 閫?",
+      "撱箇?銝甈⊥批?隞?(Backup Once) 皜祈岫?脣??啣??亦′蝣?蝬脰楝?梁鞈?憭?,
+      "閮剖?瘥摰??遢閮嚗??怎頂蝯梁???(System State) ?ㄧ璈儔??(BMR) 鞈?",
+      "??Active Directory 銝剝??D 鞈??蝑?(AD Recycle Bin)????,
+      "皜祈岫??AD 銝剖?支蝙?刻董?塚?銝血銝???DC ??瘜??刻?皞??嗥???",
+      "鈭圾憒??脣?桅?????璅∪? (DSRM) ??????AD 鞈?摨?
     ],
     quiz: [
       {
-        question: "在 Active Directory 網域中，若誤刪了某個員工的 AD 帳戶，在已啟用「AD 資源回收筒」的前提下，最理想的復原方式為何？",
+        question: "??Active Directory 蝬脣?銝哨??亥炊?芯??撌亦? AD 撣單嚗撌脣??具D 鞈??蝑???銝????儔?撘雿?",
         options: [
-          "使用 Windows Server Backup 執行完整的實體機還原，並讓伺服器離線一天",
-          "進入目錄服務還原模式 (DSRM)，還原昨天的 System State 備份",
-          "直接在 AD 管理中心 (ADAC) 的「Deleted Objects」容器中點選該物件並按「還原」",
-          "重新手動建一個同名同密碼的帳戶，即可自動恢復其 SID 與權限"
+          "雿輻 Windows Server Backup ?瑁?摰?祕擃???嚗蒂霈撩??Ｙ?銝憭?,
+          "?脣?桅?????璅∪? (DSRM)嚗??憭拍? System State ?遢",
+          "?湔??AD 蝞∠?銝剖? (ADAC) ?eleted Objects?捆?其葉暺閰脩隞嗡蒂????,
+          "???撱箔?????撖Ⅳ?董?塚??喳?芸??Ｗ儔??SID ????
         ],
         correct: 2,
-        explanation: "啟用 AD 資源回收筒後，被刪除的網域物件會被移至 Deleted Objects 容器中保留（預設 180 天）。在此期間，管理員可直接在線上點選還原，這會完整保留其原本的 SID 及所有群組屬性，不需要將 DC 關機或還原備份。"
+        explanation: "? AD 鞈??蝑?嚗◤?芷?雯?隞嗆?鋡怎宏??Deleted Objects 摰孵銝凋????身 180 憭抬??甇斗???蝞∠??∪?湔?函?銝??賊?????摰靽??嗅??祉? SID ???黎蝯惇?改?銝?閬? DC ??????隞賬?
       },
       {
-        question: "Windows Server Backup 中的「裸機復原 (BMR, Bare Metal Recovery)」備份包含哪些內容？",
+        question: "Windows Server Backup 銝剔??ㄧ璈儔??(BMR, Bare Metal Recovery)??隞賢??怠鈭摰對?",
         options: [
-          "只包含使用者個人的桌面檔案與文件",
-          "只包含作業系統核心的開機檔案",
-          "包含作業系統檔案、系統狀態以及復原開機所需的所有磁碟磁區，允許將系統還原到全新且無系統的空白硬體主機上",
-          "只包含 Active Directory 的資料庫"
+          "?芸??思蝙?刻犖???Ｘ?獢??辣",
+          "?芸??思?璆剔頂蝯望敹???瑼?",
+          "?雿平蝟餌絞瑼??頂蝯梁??誑?儔??璈??????蝣??嚗?閮勗?蝟餌絞???啣?唬??∠頂蝯梁?蝛箇蝖祇?銝餅?銝?,
+          "?芸???Active Directory ???澈"
         ],
         correct: 2,
-        explanation: "裸機復原 (BMR) 備份會包含系統作業系統、開機磁區及所有系統關鍵磁碟區的完整快照，使伺服器損毀後，管理員能直接使用 Windows 安裝開機碟開機，並將整台伺服器鏡像還原到一台全新的空白硬體主機上。"
+        explanation: "鋆豢?敺拙? (BMR) ?遢???怎頂蝯曹?璆剔頂蝯晞?璈?????頂蝯梢??萇?蝣????游翰?改?雿蹂撩???敺?蝞∠??∟?湔雿輻 Windows 摰???蝣?璈?銝血??游隡箸??券???銝?啣?啁?蝛箇蝖祇?銝餅?銝?
       }
     ],
     sections: [
       {
-        title: "10.1 Windows Server Backup 與系統備份策略",
-        content: `### 系統狀態 (System State) 與裸機還原 (BMR) 備份
-Windows Server Backup 能保證伺服器崩潰後的災後重建。
+        title: "10.1 Windows Server Backup ?頂蝯勗?隞賜???,
+        content: `### 蝟餌絞???(System State) ?ㄧ璈???(BMR) ?遢
+Windows Server Backup ?賭?霅撩?撏拇蔑敺??賢??遣??
 
 \`\`\`powershell
-# ==================== 1. 安裝 Windows 備份角色 ====================
+# ==================== 1. 摰? Windows ?遢閫 ====================
 Install-WindowsFeature -Name Windows-Server-Backup -IncludeManagementTools
 
-# ==================== 2. 執行一次性手動備份 (備份到 E 槽) ====================
+# ==================== 2. ?瑁?銝甈⊥扳???隞?(?遢??E 瑽? ====================
 wbadmin start backup -backupTarget:E: -allCritical -systemState -quiet
 
-# ==================== 3. 建立每日定時備份排程 ====================
-# (以備份 C 槽與系統狀態到獨立外接碟區 E: 為例，每日 23:00 執行)
+# ==================== 3. 撱箇?瘥摰??遢?? ====================
+# (隞亙?隞?C 瑽質?蝟餌絞???函?憭蝣? E: ?箔?嚗???23:00 ?瑁?)
 $Policy = New-WBPolicy
 Add-WBSystemState -Policy $Policy
 Add-WBBareMetalRecovery -Policy $Policy
@@ -948,25 +957,25 @@ Set-WBPolicy -Policy $Policy
 \`\`\``
       },
       {
-        title: "10.2 Active Directory 資源回收筒實務",
-        content: `### AD 資源回收筒啟用與一秒還原
-預設關閉。啟用後在 180 天之內誤刪的使用者帳戶、電腦或群組，可以不關機在線上直接完美還原。
+        title: "10.2 Active Directory 鞈??蝑祕??,
+        content: `### AD 鞈??蝑??刻?銝蝘???
+?身?????典???180 憭拐??扯炊?芰?雿輻?董?嗚?行?蝢斤?嚗隞乩????函?銝?亙?蝢???
 
 > [!WARNING]
-> AD 資源回收筒啟用為**不可逆**之操作，一旦在網域中啟用便無法關閉。
+> AD 鞈??蝑??函**銝??*銋?雿?銝?血蝬脣?銝剖??其噶?⊥?????
 
 \`\`\`powershell
-# ==================== 1. 啟用 AD 資源回收筒 ====================
+# ==================== 1. ? AD 鞈??蝑?====================
 $Domain = "lab.local"
 Enable-ADOptionalFeature -Identity "CN=Recycle Bin Feature,CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=lab,DC=local" \
                          -Scope ForestOrConfigurationSet \
                          -Target $Domain \
                          -Force
 
-# ==================== 2. 查詢並還原被誤刪的使用者 ====================
+# ==================== 2. ?亥岷銝阡??◤隤文?蝙?刻?====================
 Get-ADObject -Filter 'samAccountName -eq "johndoe"' -IncludeDeletedObjects | Restore-ADObject
 
-# ==================== 3. 查詢並還原台北整個被刪除的 OU ====================
+# ==================== 3. ?亥岷銝阡????◤?芷??OU ====================
 Get-ADObject -Filter 'Name -eq "Taipei" -and Deleted -eq $true' -IncludeDeletedObjects | Restore-ADObject
 \`\`\``
       }

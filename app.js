@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2026 2259top-wq
+ * All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of 2259top-wq.
+ * You shall not disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into with 2259top-wq.
+ */
+
 /* ==========================================
    Windows Server 2022 Tutorial Controller Script
    ========================================== */
@@ -88,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       codeBlocks.push(`<div class="code-block-wrapper">
         <button class="inner-copy-btn" onclick="copyCode(this)">
           <svg viewBox="0 0 24 24" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a1.5 1.5 0 0 1-1.5-1.5V4a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5v1" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          複製
+          銴ˊ
         </button>
         <pre><code class="language-${lang}">${highlighted}</code></pre>
       </div>`);
@@ -279,13 +288,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const textToCopy = codeElement.innerText;
     
     navigator.clipboard.writeText(textToCopy).then(() => {
-      showToast("代碼已複製至剪貼簿！");
-      button.innerText = "已複製";
+      showToast("隞?Ⅳ撌脰?鋆質?芾票蝪選?");
+      button.innerText = "撌脰?鋆?;
       button.style.backgroundColor = "var(--accent-success)";
       button.style.color = "var(--text-dark)";
       
       setTimeout(() => {
-        button.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a1.5 1.5 0 0 1-1.5-1.5V4a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5v1" fill="none" stroke="currentColor" stroke-width="2"/></svg> 複製`;
+        button.innerHTML = `<svg viewBox="0 0 24 24" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a1.5 1.5 0 0 1-1.5-1.5V4a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5v1" fill="none" stroke="currentColor" stroke-width="2"/></svg> 銴ˊ`;
         button.style.backgroundColor = "rgba(26, 34, 56, 0.8)";
         button.style.color = "var(--text-muted)";
       }, 2000);
@@ -323,16 +332,16 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (viewName === "powershell") {
       viewPowerShell.classList.add("active");
       btnPowerShellGen.classList.add("active");
-      breadcrumbs.innerHTML = `<span>工具</span> <span class="divider">/</span> <span class="active">PowerShell 產生器</span>`;
+      breadcrumbs.innerHTML = `<span>撌亙</span> <span class="divider">/</span> <span class="active">PowerShell ?Ｙ???/span>`;
     } else if (viewName === "checklist") {
       viewChecklist.classList.add("active");
       btnChecklist.classList.add("active");
-      breadcrumbs.innerHTML = `<span>工具</span> <span class="divider">/</span> <span class="active">實務設定檢核表</span>`;
+      breadcrumbs.innerHTML = `<span>撌亙</span> <span class="divider">/</span> <span class="active">撖血?閮剖?瑼Ｘ銵?/span>`;
       renderChecklistTab();
     } else if (viewName === "quizzes") {
       viewQuizzes.classList.add("active");
       btnQuizAll.classList.add("active");
-      breadcrumbs.innerHTML = `<span>評測</span> <span class="divider">/</span> <span class="active">自我實力測驗</span>`;
+      breadcrumbs.innerHTML = `<span>閰葫</span> <span class="divider">/</span> <span class="active">?芣?撖血?皜祇?</span>`;
       initQuizTab();
     }
 
@@ -366,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
       headerBtn.className = "nav-chapter-header";
       headerBtn.innerHTML = `
         <span>${ch.title}</span>
-        <span class="chevron">▶</span>
+        <span class="chevron">??/span>
       `;
 
       headerBtn.addEventListener("click", () => {
@@ -458,8 +467,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update breadcrumbs
     breadcrumbs.innerHTML = `
-      <span>首頁</span> <span class="divider">/</span> 
-      <span>${chapter.title.split("：")[0]}</span> <span class="divider">/</span> 
+      <span>擐?</span> <span class="divider">/</span> 
+      <span>${chapter.title.split("嚗?)[0]}</span> <span class="divider">/</span> 
       <span class="active">${section.title}</span>
     `;
 
@@ -513,10 +522,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const highestScore = quizScores[activeChapterIdx];
     if (highestScore !== undefined) {
       const maxScore = chapter.quiz.length;
-      scoreText.innerText = `最高得分：${highestScore} / ${maxScore}`;
+      scoreText.innerText = `?擃???${highestScore} / ${maxScore}`;
       scoreText.style.color = highestScore === maxScore ? "var(--accent-success)" : "var(--accent-secondary)";
     } else {
-      scoreText.innerText = "尚未測驗";
+      scoreText.innerText = "撠皜祇?";
       scoreText.style.color = "var(--text-muted)";
     }
   }
@@ -587,79 +596,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const psTemplates = {
     net_static_ip: {
       inputs: [
-        { label: "主機電腦名稱 (New Computer Name)", id: "param_hostname", type: "text", default: "SRV-DC-01" },
-        { label: "靜態 IP 位址 (Static IP)", id: "param_ip", type: "text", default: "192.168.10.10" },
-        { label: "預設閘道 (Gateway IP)", id: "param_gateway", type: "text", default: "192.168.10.1" },
-        { label: "主要 DNS 伺服器 (DNS Server)", id: "param_dns", type: "text", default: "192.168.10.10" }
+        { label: "銝餅??餉?迂 (New Computer Name)", id: "param_hostname", type: "text", default: "SRV-DC-01" },
+        { label: "?? IP 雿? (Static IP)", id: "param_ip", type: "text", default: "192.168.10.10" },
+        { label: "?身?? (Gateway IP)", id: "param_gateway", type: "text", default: "192.168.10.1" },
+        { label: "銝餉? DNS 隡箸???(DNS Server)", id: "param_dns", type: "text", default: "192.168.10.10" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：變更電腦名稱與設定靜態 IP 位址
+# 隞餃?嚗??湧?血?蝔梯?閮剖??? IP 雿?
 # ==================================================
 
-# 1. 變更電腦名稱 (重新啟動後生效)
-Write-Host "變更電腦名稱為 '${vals.param_hostname}'..." -ForegroundColor Cyan
+# 1. 霈?餉?迂 (???敺???
+Write-Host "霈?餉?迂??'${vals.param_hostname}'..." -ForegroundColor Cyan
 Rename-Computer -NewName "${vals.param_hostname}" -Force
 
-# 2. 自動尋找目前連線中的實體乙太網卡
+# 2. ?芸?撠?桀????銝剔?撖阡?銋云蝬脣
 $Adapter = Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.HardwareInterface } | Select-Object -First 1
 
 if ($Adapter) {
     $Index = $Adapter.InterfaceIndex
-    Write-Host "選定網卡名稱：$($Adapter.Name) [Index: $Index]" -ForegroundColor Cyan
+    Write-Host "?詨?蝬脣?迂嚗?($Adapter.Name) [Index: $Index]" -ForegroundColor Cyan
     
-    # 移除舊有同網域 IP (避免衝突，若無可忽略錯誤)
+    # 蝘駁???雯??IP (?踹?銵?嚗?∪敹賜?航炊)
     Remove-NetIPAddress -InterfaceIndex $Index -Confirm:$false -ErrorAction SilentlyContinue
     Remove-NetRoute -InterfaceIndex $Index -Confirm:$false -ErrorAction SilentlyContinue
     
-    # 設定新靜態 IP
+    # 閮剖??圈???IP
     New-NetIPAddress -InterfaceIndex $Index -IPAddress "${vals.param_ip}" -PrefixLength 24 -DefaultGateway "${vals.param_gateway}"
     
-    # 設定 DNS 快取伺服器
+    # 閮剖? DNS 敹怠?隡箸???
     Set-DnsClientServerAddress -InterfaceIndex $Index -ServerAddresses ("${vals.param_dns}", "8.8.8.8")
     
-    Write-Host "IP 配置成功！伺服器將在 5 秒後重新啟動以套用新電腦名稱..." -ForegroundColor Green
+    Write-Host "IP ?蔭??嚗撩?撠 5 蝘????隞亙??冽?餉?迂..." -ForegroundColor Green
     Start-Sleep -Seconds 5
     Restart-Computer
 } else {
-    Write-Error "錯誤：找不到處於連線狀態 (Up) 的網路卡！"
+    Write-Error "?航炊嚗銝???????(Up) ?雯頝臬嚗?
 }`
     },
     net_enable_rdp: {
       inputs: [
-        { label: "啟用網路層級驗證 (NLA) 以加強安全？", id: "param_nla", type: "select", options: [ { name: "是 (安全推薦)", value: "1" }, { name: "否 (相容舊系統)", value: "0" } ] }
+        { label: "?蝬脰楝撅斤?撽? (NLA) 隞亙?撘瑕??剁?", id: "param_nla", type: "select", options: [ { name: "??(摰?刻)", value: "1" }, { name: "??(?詨捆?頂蝯?", value: "0" } ] }
       ],
       generate: (vals) => `# ==================================================
-# 任務：快速啟用遠端桌面 (RDP) 服務
+# 隞餃?嚗翰???券?蝡舀???(RDP) ??
 # ==================================================
 
-Write-Host "啟用遠端桌面服務..." -ForegroundColor Cyan
-# 修改 Registry 啟用 RDP 埠
+Write-Host "??垢獢??..." -ForegroundColor Cyan
+# 靽格 Registry ? RDP ??
 Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -Name "fDenyTSConnections" -Value 0
 
-# 設定 NLA (網路層級驗證)
+# 閮剖? NLA (蝬脰楝撅斤?撽?)
 Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp' -Name "UserAuthentication" -Value ${vals.param_nla}
 
-# 在 Windows Defender 防火牆中啟用 RDP 入站規則
-Write-Host "設定防火牆允許遠端桌面入站..." -ForegroundColor Cyan
+# ??Windows Defender ?脩?葉? RDP ?亦?閬?
+Write-Host "閮剖??脩??閮梢?蝡舀??Ｗ蝡?.." -ForegroundColor Cyan
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
-Write-Host "遠端桌面服務 (RDP) 配置完畢，預設連接埠為 3389。" -ForegroundColor Green`
+Write-Host "?垢獢?? (RDP) ?蔭摰嚗?閮剝?? 3389?? -ForegroundColor Green`
     },
     ad_install_forest: {
       inputs: [
-        { label: "AD 網域 FQDN 域名 (如 lab.local)", id: "param_domain", type: "text", default: "corp.contoso.com" },
-        { label: "網域 NetBIOS 名稱", id: "param_netbios", type: "text", default: "CONTOSO" },
-        { label: "DSRM 還原模式管理員密碼", id: "param_dsrm", type: "text", default: "P@ssw0rd999" }
+        { label: "AD 蝬脣? FQDN ?? (憒?lab.local)", id: "param_domain", type: "text", default: "corp.contoso.com" },
+        { label: "蝬脣? NetBIOS ?迂", id: "param_netbios", type: "text", default: "CONTOSO" },
+        { label: "DSRM ??璅∪?蝞∠??∪?蝣?, id: "param_dsrm", type: "text", default: "P@ssw0rd999" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：新增 AD DS 樹系 (全新第一台 DC 部署)
-# 備註：指令執行後系統將自動開始 Promo 並自動重啟！
+# 隞餃?嚗憓?AD DS 璅寧頂 (?冽蝚砌???DC ?函蔡)
+# ?酉嚗?隞文銵?蝟餌絞撠??憪?Promo 銝西????
 # ==================================================
 
-Write-Host "步驟 1: 安裝 AD DS 角色與工具..." -ForegroundColor Cyan
+Write-Host "甇仿? 1: 摰? AD DS 閫?極??.." -ForegroundColor Cyan
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
-Write-Host "步驟 2: 升級為網域控制站 (DC) 新增樹系..." -ForegroundColor Cyan
+Write-Host "甇仿? 2: ???箇雯??嗥? (DC) ?啣?璅寧頂..." -ForegroundColor Cyan
 Import-Module ADDSDeployment
 
 $SecurePassword = ConvertTo-SecureString "${vals.param_dsrm}" -AsPlainText -Force
@@ -680,32 +689,32 @@ Install-ADDSForest \`
     },
     ad_create_ou_user: {
       inputs: [
-        { label: "目標組織單位 (OU) 名稱", id: "param_ou", type: "text", default: "SalesDepartment" },
-        { label: "使用者帳號名稱 (SamAccountName)", id: "param_user", type: "text", default: "tonystark" },
-        { label: "使用者姓名 (DisplayName)", id: "param_display", type: "text", default: "Tony Stark" },
-        { label: "預設登入密碼", id: "param_pass", type: "text", default: "Avengers2026!" }
+        { label: "?格?蝯??桐? (OU) ?迂", id: "param_ou", type: "text", default: "SalesDepartment" },
+        { label: "雿輻?董??蝔?(SamAccountName)", id: "param_user", type: "text", default: "tonystark" },
+        { label: "雿輻????(DisplayName)", id: "param_display", type: "text", default: "Tony Stark" },
+        { label: "?身?餃撖Ⅳ", id: "param_pass", type: "text", default: "Avengers2026!" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：建立組織單位 (OU) 與新網域使用者
+# 隞餃?嚗遣蝡?蝜雿?(OU) ?蝬脣?雿輻??
 # ==================================================
 
-# 取得目前 Active Directory 網域 Base DN
+# ???桀? Active Directory 蝬脣? Base DN
 $DomainDN = (Get-ADDomain).DistinguishedName
 $TargetOUPath = "OU=${vals.param_ou},$DomainDN"
 
-# 1. 建立 OU
+# 1. 撱箇? OU
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq '${vals.param_ou}'")) {
-    Write-Host "建立組織單位 (OU)：${vals.param_ou}..." -ForegroundColor Cyan
+    Write-Host "撱箇?蝯??桐? (OU)嚗?{vals.param_ou}..." -ForegroundColor Cyan
     New-ADOrganizationalUnit -Name "${vals.param_ou}" -Path $DomainDN
 } else {
-    Write-Host "組織單位 '${vals.param_ou}' 已存在，略過建立。" -ForegroundColor Yellow
+    Write-Host "蝯??桐? '${vals.param_ou}' 撌脣??剁??仿?撱箇??? -ForegroundColor Yellow
 }
 
-# 2. 建立新使用者並設定登入時強迫修改密碼
+# 2. 撱箇??唬蝙?刻蒂閮剖??餃?撥餈思耨?孵?蝣?
 $SecurePass = ConvertTo-SecureString "${vals.param_pass}" -AsPlainText -Force
 $UPNDomain = (Get-ADDomain).DNSRoot
 
-Write-Host "建立網域使用者：${vals.param_user}..." -ForegroundColor Cyan
+Write-Host "撱箇?蝬脣?雿輻??${vals.param_user}..." -ForegroundColor Cyan
 New-ADUser -Name "${vals.param_display}" \`
            -SamAccountName "${vals.param_user}" \`
            -UserPrincipalName "${vals.param_user}@$UPNDomain" \`
@@ -714,99 +723,99 @@ New-ADUser -Name "${vals.param_display}" \`
            -Enabled $true \`
            -ChangePasswordAtLogon $true
 
-Write-Host "成功建立使用者：${vals.param_display} (${vals.param_user})！" -ForegroundColor Green`
+Write-Host "??撱箇?雿輻??${vals.param_display} (${vals.param_user})嚗? -ForegroundColor Green`
     },
     dns_set_forwarder: {
       inputs: [
-        { label: "主要外部轉寄站 IP", id: "param_dns1", type: "text", default: "8.8.8.8" },
-        { label: "次要外部轉寄站 IP", id: "param_dns2", type: "text", default: "1.1.1.1" }
+        { label: "銝餉?憭頧?蝡?IP", id: "param_dns1", type: "text", default: "8.8.8.8" },
+        { label: "甈∟?憭頧?蝡?IP", id: "param_dns2", type: "text", default: "1.1.1.1" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：設定本機 DNS 伺服器之外部 DNS 轉寄站
+# 隞餃?嚗身摰璈?DNS 隡箸??其?憭 DNS 頧?蝡?
 # ==================================================
 
-Write-Host "設定 DNS 轉寄站指向 ${vals.param_dns1} 和 ${vals.param_dns2}..." -ForegroundColor Cyan
+Write-Host "閮剖? DNS 頧?蝡???${vals.param_dns1} ??${vals.param_dns2}..." -ForegroundColor Cyan
 Set-DnsServerForwarder -IPAddress @("${vals.param_dns1}", "${vals.param_dns2}") -PassThru
 
-Write-Host "DNS 轉寄伺服器設定完成！" -ForegroundColor Green`
+Write-Host "DNS 頧?隡箸??刻身摰???" -ForegroundColor Green`
     },
     dhcp_create_scope: {
       inputs: [
-        { label: "作用域名稱 (Scope Name)", id: "param_shcp_name", type: "text", default: "Office_LAN" },
-        { label: "發放起始 IP (Start IP)", id: "param_dhcp_start", type: "text", default: "192.168.10.100" },
-        { label: "發放結束 IP (End IP)", id: "param_dhcp_end", type: "text", default: "192.168.10.200" },
-        { label: "子網路遮罩 (Subnet Mask)", id: "param_dhcp_mask", type: "text", default: "255.255.255.0" },
-        { label: "預設閘道 (Gateway / Router)", id: "param_dhcp_gw", type: "text", default: "192.168.10.1" }
+        { label: "雿??蝔?(Scope Name)", id: "param_shcp_name", type: "text", default: "Office_LAN" },
+        { label: "?潭韏瑕? IP (Start IP)", id: "param_dhcp_start", type: "text", default: "192.168.10.100" },
+        { label: "?潭蝯? IP (End IP)", id: "param_dhcp_end", type: "text", default: "192.168.10.200" },
+        { label: "摮雯頝舫蝵?(Subnet Mask)", id: "param_dhcp_mask", type: "text", default: "255.255.255.0" },
+        { label: "?身?? (Gateway / Router)", id: "param_dhcp_gw", type: "text", default: "192.168.10.1" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：新增 DHCP 作用域與指定 Gateway/DNS 參數
+# 隞餃?嚗憓?DHCP 雿???? Gateway/DNS ?
 # ==================================================
 
-# 計算 Scope ID (網段識別碼)
+# 閮? Scope ID (蝬脫挾霅蝣?
 $IPParts = "${vals.param_dhcp_start}".Split('.')
 $ScopeID = "$($IPParts[0]).$($IPParts[1]).$($IPParts[2]).0"
 
-Write-Host "建立 DHCP 作用域: ${vals.param_shcp_name} [網段: $ScopeID]..." -ForegroundColor Cyan
+Write-Host "撱箇? DHCP 雿?? ${vals.param_shcp_name} [蝬脫挾: $ScopeID]..." -ForegroundColor Cyan
 Add-DhcpServerv4Scope -Name "${vals.param_shcp_name}" \`
                        -StartRange "${vals.param_dhcp_start}" \`
                        -EndRange "${vals.param_dhcp_end}" \`
                        -SubnetMask "${vals.param_dhcp_mask}" \`
                        -State Active
 
-Write-Host "設定 DHCP 選項參數 (003 Gateway 與 006 本機 DNS)..." -ForegroundColor Cyan
-# 設定 Option 003: 路由器
+Write-Host "閮剖? DHCP ?賊?? (003 Gateway ??006 ?祆? DNS)..." -ForegroundColor Cyan
+# 閮剖? Option 003: 頝舐??
 Set-DhcpServerv4OptionValue -ScopeId $ScopeID -OptionId 3 -Value "${vals.param_dhcp_gw}"
 
-# 自動搜尋本機固定 IP 作為 DNS 指派給客戶端
+# ?芸????祆??箏? IP 雿 DNS ?晷蝯血恥?嗥垢
 $LocalIP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -ne '127.0.0.1' -and -not $_.IPAddress.StartsWith('169.254') })[0].IPAddress
 Set-DhcpServerv4OptionValue -ScopeId $ScopeID -OptionId 6 -Value $LocalIP
 
-Write-Host "DHCP 作用域配置成功且已生效！" -ForegroundColor Green`
+Write-Host "DHCP 雿??蝵格???撌脩???" -ForegroundColor Green`
     },
     fs_create_share: {
       inputs: [
-        { label: "共享磁碟名稱 (SMB Share Name)", id: "param_share_name", type: "text", default: "HR-Documents" },
-        { label: "本機實體資料夾路徑", id: "param_local_path", type: "text", default: "D:\\Shares\\HR-Docs" },
-        { label: "欲授予『修改』與『寫入』之 AD 群組名稱", id: "param_share_group", type: "text", default: "GG-HR-Staff" }
+        { label: "?曹澈蝤??迂 (SMB Share Name)", id: "param_share_name", type: "text", default: "HR-Documents" },
+        { label: "?祆?撖阡?鞈?憭曇楝敺?, id: "param_local_path", type: "text", default: "D:\\Shares\\HR-Docs" },
+        { label: "甈脫?鈭耨?嫘??神?乓? AD 蝢斤??迂", id: "param_share_group", type: "text", default: "GG-HR-Staff" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：建立檔案共用資料夾與設定 NTFS 權限
+# 隞餃?嚗遣蝡?獢?刻??冗?身摰?NTFS 甈?
 # ==================================================
 
-# 1. 建立實體目錄 (若不存在)
+# 1. 撱箇?撖阡??桅? (?乩?摮)
 if (-not (Test-Path "${vals.param_local_path}")) {
-    Write-Host "建立本機目錄：${vals.param_local_path}..." -ForegroundColor Cyan
+    Write-Host "撱箇??祆??桅?嚗?{vals.param_local_path}..." -ForegroundColor Cyan
     New-Item -Path "${vals.param_local_path}" -ItemType Directory -Force
 }
 
-# 2. 建立 SMB 共享資源，授予特定群組完整存取，其他人只能讀取
-Write-Host "發佈 Windows 檔案共用共享區 '${vals.param_share_name}'..." -ForegroundColor Cyan
+# 2. 撱箇? SMB ?曹澈鞈?嚗?鈭摰黎蝯??游????嗡?鈭箏?質???
+Write-Host "?潔? Windows 瑼??梁?曹澈? '${vals.param_share_name}'..." -ForegroundColor Cyan
 New-SmbShare -Name "${vals.param_share_name}" -Path "${vals.param_local_path}" -FullAccess "${vals.param_share_group}" -ReadAccess "Everyone"
 
-# 3. 調整實體資料夾的 NTFS ACL，移除繼承改由精細清單控制
-Write-Host "套用 NTFS 權限規則 (授權給 ${vals.param_share_group} 修改權)..." -ForegroundColor Cyan
+# 3. 隤踵撖阡?鞈?憭曄? NTFS ACL嚗宏?斤匱?踵?梁移蝝唳??格??
+Write-Host "憟 NTFS 甈?閬? (??蝯?${vals.param_share_group} 靽格甈?..." -ForegroundColor Cyan
 $ACL = Get-Acl "${vals.param_local_path}"
 
-# 建立存取控制規則 (Modify 權限，繼承至所有子資料夾及檔案)
+# 撱箇?摮??批閬? (Modify 甈?嚗匱?輯???鞈?憭曉?瑼?)
 $Rule = New-Object System.Security.AccessControl.FileSystemAccessRule("${vals.param_share_group}", "Modify", "ContainerInherit,ObjectInherit", "None", "Allow")
 $ACL.SetAccessRule($Rule)
 
-# 套用 ACL
+# 憟 ACL
 Set-Acl "${vals.param_local_path}" $ACL
 
-Write-Host "共享目錄與安全性權限配置成功！" -ForegroundColor Green`
+Write-Host "?曹澈?桅????冽扳???蝵格???" -ForegroundColor Green`
     },
     sec_add_firewall: {
       inputs: [
-        { label: "規則易記名稱 (Firewall Rule Display Name)", id: "param_fw_name", type: "text", default: "Allow custom app port" },
-        { label: "連接埠編號 (Port)", id: "param_fw_port", type: "text", default: "8080" },
-        { label: "網路通訊協定", id: "param_fw_proto", type: "select", options: [ { name: "TCP", value: "TCP" }, { name: "UDP", value: "UDP" } ] }
+        { label: "閬????迂 (Firewall Rule Display Name)", id: "param_fw_name", type: "text", default: "Allow custom app port" },
+        { label: "???楊??(Port)", id: "param_fw_port", type: "text", default: "8080" },
+        { label: "蝬脰楝????", id: "param_fw_proto", type: "select", options: [ { name: "TCP", value: "TCP" }, { name: "UDP", value: "UDP" } ] }
       ],
       generate: (vals) => `# ==================================================
-# 任務：建立入站防火牆自訂 TCP/UDP 連接埠規則
+# 隞餃?嚗遣蝡蝡?怎??芾? TCP/UDP ??????
 # ==================================================
 
-Write-Host "新增 Windows 進階安全防火牆入站規則..." -ForegroundColor Cyan
+Write-Host "?啣? Windows ?脤?摰?脩?蝡???.." -ForegroundColor Cyan
 New-NetFirewallRule -Name "CustomAppRule_Port_${vals.param_fw_port}" \`
                     -DisplayName "${vals.param_fw_name}" \`
                     -Description "Allow inbound traffic on port ${vals.param_fw_port}" \`
@@ -816,24 +825,24 @@ New-NetFirewallRule -Name "CustomAppRule_Port_${vals.param_fw_port}" \`
                     -Action Allow \`
                     -Profile Any
 
-Write-Host "防火牆規則已套用且立即生效！" -ForegroundColor Green`
+Write-Host "?脩???歇憟銝??喟???" -ForegroundColor Green`
     },
     backup_system_state: {
       inputs: [
-        { label: "備份儲存目標槽代號 (請務必填入非系統之獨立碟區代號，如 E:)", id: "param_bk_vol", type: "text", default: "E:" }
+        { label: "?遢?脣??格?瑽賭誨??(隢?敹‵?仿?蝟餌絞銋蝡??隞??嚗? E:)", id: "param_bk_vol", type: "text", default: "E:" }
       ],
       generate: (vals) => `# ==================================================
-# 任務：安裝備份角色並執行 System State 系統狀態備份
+# 隞餃?嚗?鋆?隞質??脖蒂?瑁? System State 蝟餌絞???隞?
 # ==================================================
 
-# 1. 確保已安裝 Windows Server Backup 角色功能
+# 1. 蝣箔?撌脣?鋆?Windows Server Backup 閫?
 if (-not (Get-WindowsFeature -Name Windows-Server-Backup).Installed) {
-    Write-Host "安裝 Windows Server Backup 角色功能..." -ForegroundColor Cyan
+    Write-Host "摰? Windows Server Backup 閫?..." -ForegroundColor Cyan
     Install-WindowsFeature -Name Windows-Server-Backup -IncludeManagementTools
 }
 
-# 2. 開始執行系統狀態備份 (DSRM 復原、AD 資料庫等備份核心)
-Write-Host "開始系統狀態備份，備份磁碟區目標為 '${vals.param_bk_vol}'..." -ForegroundColor Cyan
+# 2. ???瑁?蝟餌絞???隞?(DSRM 敺拙??D 鞈?摨怎??遢?詨?)
+Write-Host "??蝟餌絞???隞踝??遢蝤???格???'${vals.param_bk_vol}'..." -ForegroundColor Cyan
 wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     }
   };
@@ -913,10 +922,10 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
   // Copy Generated Button Handler
   btnCopyGenerated.addEventListener("click", () => {
     navigator.clipboard.writeText(currentGeneratedScript).then(() => {
-      showToast("PowerShell 腳本已複製至剪貼簿！");
-      btnCopyGenerated.querySelector("span").innerText = "已複製！";
+      showToast("PowerShell ?單撌脰?鋆質?芾票蝪選?");
+      btnCopyGenerated.querySelector("span").innerText = "撌脰?鋆踝?";
       setTimeout(() => {
-        btnCopyGenerated.querySelector("span").innerText = "複製程式碼";
+        btnCopyGenerated.querySelector("span").innerText = "銴ˊ蝔?蝣?;
       }, 2000);
     });
   });
@@ -949,7 +958,7 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
       titleNode.className = "checklist-chapter-title";
       titleNode.innerHTML = `
         <span>${ch.title}</span>
-        <span class="chapter-badge-count">已勾選 ${chCheckedCount} / ${chTasksCount}</span>
+        <span class="chapter-badge-count">撌脣??${chCheckedCount} / ${chTasksCount}</span>
       `;
       block.appendChild(titleNode);
 
@@ -988,7 +997,7 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     const percent = Math.round(ratio * 100);
 
     document.getElementById("chk-overall-percent").innerText = `${percent}%`;
-    document.getElementById("chk-overall-count").innerText = `已完成 ${totalChecked} / ${totalTasks} 項`;
+    document.getElementById("chk-overall-count").innerText = `撌脣???${totalChecked} / ${totalTasks} ?;
     document.getElementById("chk-overall-bar").style.width = `${percent}%`;
   }
 
@@ -1013,7 +1022,7 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     tutorialsData.forEach((ch, chIdx) => {
       const tab = document.createElement("li");
       tab.className = `quiz-tab-item ${chIdx === activeQuizChapterIdx ? "active" : ""}`;
-      tab.innerText = ch.title.split("：")[0]; // Short title (e.g. 第一章)
+      tab.innerText = ch.title.split("嚗?)[0]; // Short title (e.g. 蝚砌?蝡?
       
       tab.addEventListener("click", () => {
         // Switch active quiz tab
@@ -1042,8 +1051,8 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     btnQuizRestart.classList.add("hidden");
 
     // Badges & title
-    quizChapterBadge.innerText = chapter.title.split("：")[0];
-    quizQuestionNumber.innerText = `第 ${activeQuizQuestionIdx + 1} / ${chapter.quiz.length} 題`;
+    quizChapterBadge.innerText = chapter.title.split("嚗?)[0];
+    quizQuestionNumber.innerText = `蝚?${activeQuizQuestionIdx + 1} / ${chapter.quiz.length} 憿;
     quizQuestionText.innerText = quiz.question;
 
     quizOptionsList.innerHTML = "";
@@ -1115,11 +1124,11 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     if (isCorrect) {
       quizFeedbackPanel.className = "quiz-feedback correct-feedback";
       quizFeedbackStatus.className = "feedback-status correct-text";
-      quizFeedbackStatus.innerHTML = `<span class="status-icon">✓</span> 答對了！`;
+      quizFeedbackStatus.innerHTML = `<span class="status-icon">??/span> 蝑?鈭?`;
     } else {
       quizFeedbackPanel.className = "quiz-feedback wrong-feedback";
       quizFeedbackStatus.className = "feedback-status wrong-text";
-      quizFeedbackStatus.innerHTML = `<span class="status-icon">✗</span> 答錯了...`;
+      quizFeedbackStatus.innerHTML = `<span class="status-icon">??/span> 蝑鈭?..`;
     }
 
     quizExplanationText.innerText = quiz.explanation;
@@ -1153,7 +1162,7 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     }
 
     btnQuizRestart.classList.remove("hidden");
-    btnQuizRestart.innerText = `重新測驗 (${correctCount} / ${chapter.quiz.length})`;
+    btnQuizRestart.innerText = `?皜祇? (${correctCount} / ${chapter.quiz.length})`;
     btnQuizRestart.onclick = () => {
       // Clear answers for this chapter
       chapter.quiz.forEach((_, idx) => {
@@ -1244,7 +1253,7 @@ wbadmin start systemstatebackup -backupTarget:${vals.param_bk_vol} -quiet`
     if (matches.length === 0) {
       const emptyItem = document.createElement("div");
       emptyItem.className = "search-result-item";
-      emptyItem.innerHTML = `<div style="color: var(--text-muted); text-align: center;">找不到相符結果</div>`;
+      emptyItem.innerHTML = `<div style="color: var(--text-muted); text-align: center;">?曆??啁蝚衣???/div>`;
       searchDropdown.appendChild(emptyItem);
       searchDropdown.classList.remove("hidden");
       return;
